@@ -1,0 +1,49 @@
+{
+  "name": "oerhoernchen20-react",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://programmieraffe.github.io/oerhoernchen20-react/",
+  "dependencies": {
+    "@appbaseio/reactivesearch": "^3.0.0-rc.21",
+    "bootstrap": "^4.3.1",
+    "gh-pages": "^2.0.1",
+    "json-loader": "^0.5.7",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "webpack",
+    "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.1.0",
+    "file-loader": "^4.1.0",
+    "webpack-cli": "^3.3.6"
+  }
+}

@@ -1,0 +1,257 @@
+{
+    "special_topics":[{
+        "label":"BNE/Klimakrise",
+        "value":"educationforsustainabledevelopment"
+    }],
+    "general_types": [{
+        "label": "Arbeitsblatt",
+        "value": "worksheet"
+    },{
+        "label": "Audio",
+        "value": "audio"
+    }, {
+        "label": "Präsentationsfolien",
+        "value": "slides"
+    },  {
+        "label": "Interaktiver Inhalt",
+        "value": "interactive"
+    }, {
+        "label": "Kurs - Einheit/Modul",
+        "value": "coursemodule"
+    }, {
+        "label": "Kurs - mehrwöchig",
+        "value": "coursefull"
+    },{
+        "label": "Podcast",
+        "value": "podcast"
+    },{
+        "label": "Simulation",
+        "value": "simulation"
+    },{
+        "label": "Textbook\/E-Book",
+        "value": "textbook"
+    }, {
+        "label": "Unterricht-\/Seminarverlauf",
+        "value": "teachingconcept"
+    },{
+        "label": "Übungsaufgaben\/Assesment",
+        "value": "quiz"
+    },{
+        "label": "Video",
+        "value": "video"
+    },{
+        "label":"Sonstiges",
+        "value":"other"
+    }],
+    "technical_formats": [{
+        "label": "h5p",
+        "value": "h5p"
+    }, {
+        "label": "Microsoft Office",
+        "value": "microsoftoffice"
+    }, {
+        "label": "Open\/Libre Office",
+        "value": "openlibreoffice"
+    }, {
+        "label": "Google Docs",
+        "value": "googledocs"
+    }, {
+        "label": "PDF",
+        "value": "pdf"
+    }, {
+        "label": "Apple Keynote\/Pages",
+        "value": "appleoffice"
+    }, {
+        "label": "Pressbooks",
+        "value": "pressbooks"
+    }, {
+        "label": "Reveal-Präsentation",
+        "value": "reveal"
+    }, {
+        "label": "Static Site Generator",
+        "value": "staticsitegenerator"
+    }, {
+        "label": "Markdown",
+        "value": "markdown"
+    }, {
+        "label": "Moodle (LMS)",
+        "value": "moodle"
+    }, {
+        "label": "ILIAS (LMS)",
+        "value": "ilias"
+    }, {
+        "label": "Tutory",
+        "value": "tutory"
+    }, {
+        "label": "Slidewiki",
+        "value": "slidewiki"
+    }, {
+        "label": "Open Course Ware (OCW)",
+        "value": "opencourseware"
+    }, {
+        "label": "SCORM",
+        "value": "scorm"
+    },{
+        "label":"Sonstiges",
+        "value":"other"
+    }],
+    "educational_sectors": [{
+        "label": "Frühkindliche Erziehung",
+        "value": "earlychildhood"
+    }, {
+        "label": "Grundschulbildung (1-4)",
+        "value": "primaryschool"
+    }, {
+        "label": "Sekundarstufe 1 (5-10)",
+        "value": "secondaryschool1"
+    }, {
+        "label": "Sekundarstufe 2 (11-13)",
+        "value": "secondaryschool2"
+    }, {
+        "label": "Hochschule",
+        "value": "highereducation"
+    }, {
+        "label": "Berufliche Bildung",
+        "value": "vocationaleducation"
+    }, {
+        "label": "Weiterbildung",
+        "value": "furthereducation"
+    }],
+    "license_types": [{
+        "label": "CC0",
+        "value": "cc0"
+    }, {
+        "label": "CC BY",
+        "value": "ccby"
+    }, {
+        "label": "CC BY-SA",
+        "value": "ccbysa"
+    }, {
+        "label": "CC BY-SA-NC",
+        "value": "ccbysanc"
+    }, {
+        "label": "CC BY-ND",
+        "value": "ccbynd"
+    }, {
+        "label": "CC BY-NC",
+        "value": "ccbync"
+    }, {
+        "label": "CC BY-NC-ND",
+        "value": "ccbyncnd"
+    }, 
+    {
+        "label": "Ohne freie Lizenz :(",
+        "value": "regularcopyright"
+    },
+    {
+        "label": "Sonstige Lizenzen",
+        "value": "other"
+    }],
+    "school_subjects": [{
+        "label": "Arbeit und Beruf",
+        "value": "career"
+    }, {
+        "label": "Biologie",
+        "value": "biology"
+    }, {
+        "label": "Chemie",
+        "value": ""
+    }, {
+        "label": "Deutsch",
+        "value": "german"
+    }, {
+        "label": "Deutsch als Zweitsprache",
+        "value": "germansecondlanguage"
+    },{
+        "label": "Englisch",
+        "value": "english"
+    }, {
+        "label": "Französisch",
+        "value": "french"
+    }, {
+        "label": "Geographie",
+        "value": "geography"
+    }, {
+        "label": "Geschichte",
+        "value": "history"
+    }, {
+        "label": "Gesellschaft",
+        "value": "society"
+    }, {
+        "label": "Hauswirtschaft/Ernährung",
+        "value": "nutrition"
+    }, {
+        "label": "Informatik",
+        "value": "computerscience"
+    }, {
+        "label": "Kunst",
+        "value": "arts"
+    }, {
+        "label": "Latein",
+        "value": "latin"
+    }, {
+        "label": "Musik",
+        "value": "music"
+    }, {
+        "label": "Naturwissenschaften/Technik",
+        "value": "naturescience"
+    }, {
+        "label": "Philosophie",
+        "value": "philosophy"
+    }, {
+        "label": "Physik",
+        "value": "physics"
+    }, {
+        "label": "Politik/Gesellschaft/Wirtschaft",
+        "value": "policitssocietyeconomy"
+    }, {
+        "label": "Religion",
+        "value": "religion"
+    }, {
+        "label": "Russisch",
+        "value": "russian"
+    }, {
+        "label": "Sachunterricht",
+        "value": "generalstudies"
+    }, {
+        "label": "Sprachen",
+        "value": "language"
+    }, {
+        "label": "Sport",
+        "value": "sports"
+    }, {
+        "label": "Theater",
+        "value": "theatre"
+    }],
+    "higher_education_subjects": [{
+        "label":"Agrar-/Forstwissenschaften",
+        "value":"agrar"
+    },{
+        "label":"Gesellschafts- und Sozialwissenschaften",
+        "value":"humanities"
+    },{
+        "label":"Ingenieurwissenschaften",
+        "value":"Engineering"
+    },{
+        "label":"Kunst, Musik, Design",
+        "value":"arts"
+    },{
+        "label":"Lehramt",
+        "value":"teaching"
+    },{
+        "label":"Mathematik, Naturwissenschaften",
+        "value":"mathematicsnature"
+    },{
+        "label":"Medizin, Gesundheitswissenschaften",
+        "value":"medicalstudies"
+    },{
+        "label":"Öffentliche Verwaltung",
+        "value":"publicadministration"
+    },{
+        "label":"Sprach- und Kulturwissenschaften",
+        "value":"culturalstudies"
+    },{
+        "label":"Wirtschaftswissenschaften, Rechtswissenschaften",
+        "value":"economiclaw"
+    }]
+}

@@ -1,0 +1,120 @@
+
+.alert{
+	  font-family:'Open Sans',Arial;
+}
+
+/* link styles */
+.row a{
+	text-decoration: underline;
+}
+
+.license-filter-box .card-header a{
+	text-decoration: none;
+}
+
+
+/* heading too big for long words */
+
+@media only screen and (min-width: 768px) {
+	header.masthead .page-heading h1, header.masthead .site-heading h1 {
+		font-size:55px;
+	}
+}
+
+@media only screen and (min-width: 421px) and (max-width:765px) {
+	header.masthead .page-heading h1, header.masthead .site-heading h1 {
+		font-size:40px;
+	}
+	.subheading, header.masthead .site-heading .subheading {
+	    font-size: 18px;
+	}
+}
+
+@media only screen and (max-width:420px)  {
+	header.masthead .page-heading h1, header.masthead .site-heading h1 {
+		font-size:22px;
+	}
+	.subheading, header.masthead .site-heading .subheading {
+	    font-size: 10px;
+	}
+}
+
+/* 2DO: profi search, move later */
+
+#title-cse-search-results{
+	margin-top:45px;
+}
+#cse-search-results{
+	margin-top:15px;
+}
+
+#cse-search-results h4{
+	font-size: 18px;
+	font-weight:400;
+	font-family:"Arial",sans-serif;
+	margin:0;
+	padding:0;
+	line-height:20px;
+}
+#cse-search-results div.item-formatted-url{
+	text-decoration:none;
+		font-family:"Arial",sans-serif;
+		height: 18px;
+		line-height:16px;
+			margin:0;
+	    overflow: hidden;
+}
+#cse-search-results div.item-formatted-url cite{
+	font-size:14px;
+	font-style: normal;
+	color:#0085a1;
+}
+#cse-search-results p.item-snippet{
+	font-size:14px;
+	margin:0;
+	padding-top:4px;
+	line-height:14px;
+	font-family:"Arial",sans-serif;
+
+}
+
+#cse-search-results .item{
+	margin-bottom: 26px;
+}
+#cse-search-results a{
+	text-decoration:none;
+	cursor:pointer;
+	color:#1a0dab;;
+}
+#cse-search-results a:hover{
+	text-decoration:underline;
+}
+
+
+/* for url check */
+.urlcheck-small-values{
+	font-size:20px;
+}
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin:0 auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+footer a, footer a:visited{
+	color:#CCC;
+}
+
+.cookiealert{
+	font-size:14px;
+}

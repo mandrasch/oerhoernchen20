@@ -1,0 +1,80 @@
+[
+
+    {
+        "info":"HOOU portal - no rel license no lrmi source code :((",
+        "project_key":"hoou",
+        "allowed_domains":["hoou.de"],
+        "start_urls":["https://www.hoou.de/materials/"],
+        "rules_parse_item_allow":[".*\\/materials\\/.*"],
+        "exclude_pages_with_no_cc_license":0
+    },
+    {
+        "info":"project with specific path, no machine readable licenses, but general license",
+        "project_key":"oeruniletest",
+        "allowed_domains": ["pub.matthias-andrasch.de"],
+        "start_urls": ["http://pub.matthias-andrasch.de/2019/oerunileipzig/"],
+        "rules_parse_item_allow":[".*\\/lerninhalt\\/.*"],
+        "exclude_pages_with_no_cc_license":0,
+        "manual_license_override":"https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+        "info":"project with specific path, no machine readable licenses, but general license",
+        "project_key":"oerunileipzig",
+        "allowed_domains": ["oer.uni-leipzig.de"],
+        "start_urls": ["https://oer.uni-leipzig.de/"],
+        "rules_parse_item_allow":[".*\\/lerninhalt\\/.*"],
+        "exclude_pages_with_no_cc_license":0,
+        "manual_license_override":"https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+        "info":"mixed content provider (OER/default), has machine readable licenses",
+        "project_key":"oncampus",
+        "allowed_domains": ["oncampus.de"],
+        "start_urls": ["https://www.oncampus.de/"],
+        "exclude_pages_with_no_cc_license":1
+    },
+    {
+        "info":"project with no machine readable licenses, but general license for all subpages",
+        "project_key":"infschule",
+        "allowed_domains":["inf-schule.de"],
+        "start_urls":["http://www.inf-schule.de/"],
+        "exclude_pages_with_no_cc_license":0,
+        "manual_license_override":"https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+        "info":"has machine readable license, but not in standardformat, so we just override it",
+        "project_key":"siemensstiftungmedienportal",
+        "allowed_domains":["medienportal.siemens-stiftung.org"],
+        "start_urls":["https://medienportal.siemens-stiftung.org"],
+        "exclude_pages_with_no_cc_license":0,
+        "manual_license_override":"https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+        "info":"subcategory, special case: multiple license tags on page (crawler uses first element, no problem in this case)",
+        "project_key":"edulabs",
+        "allowed_domains":["edulabs.de"],
+        "start_urls":["https://edulabs.de/oer/"],
+        "rules_parse_item_allow":[".*\\/oer\\/.*"],
+        "exclude_pages_with_no_cc_license":1
+    },
+    {
+        "info":"almost best case - example, every page has a valid license, but the title-tag is not good",
+        "project_key":"mediatehkhhu",
+        "allowed_domains":["mediathek.hhu.de"],
+        "start_urls":["https://mediathek.hhu.de"],
+        "rules_parse_item_allow":[".*\\/watch\\/.*"],
+        "exclude_pages_with_no_cc_license":1
+    },
+    {
+        "general":"best guess methode einführen --> links suchen, die https://creativecommons.org/licenses/ beinhalten",
+        "0":"ö1macht schule, kein rel-link, aber generelle lizenz?",
+        "2do":"SEGU, ZUM --> deny wiki pages?",
+        "2do":"Serlo -> hat CC license",
+        "2do2":"lecture2go -> bindet link ein, aber nicht rel=license (nicht abgedeckt) --> custom solution?",
+        "2do3":"Siemens Medienportal auch nicht bei Google indiziert korrekt",
+        "2do4":"HOOU -> https://www.hoou.de/materials/podcasts-synergie-06, in LRMI aber nicht im HTML korrekt mit rel license",
+        "2do5":"custom crawler schreiben mit if project_key == HOOU? ",
+        "2do6":"ZOERR -> aus ldjson fummeln? view-source:https://www.oerbw.de/edu-sharing/components/render/692c0e92-9485-4df0-bf14-4024ed561b68",
+        "2do7":"Qualis Materialdatenbak & Co --> nach http://creativecommons.org/licenses/* durchsuchen? (educated guess?)"
+    }
+]

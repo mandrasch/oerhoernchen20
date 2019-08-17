@@ -1,0 +1,84 @@
+header.masthead, header.masthead > .container{
+	max-height:60px;
+	margin-bottom:5px;
+	overflow:hidden;
+}
+
+.hiddenDetails{
+	display:none;
+}
+
+
+/* ===== ADD ENTRY FORM  =========== */
+
+/* copied from app.css oerhoernchen-react20 */
+
+/*body{
+  font-size:16px;
+}
+*/
+
+form{
+  font-family:'Open Sans',Arial;
+  font-size:16px;
+}
+
+.btn{
+  border-radius: 4px;
+}
+
+#submit-entry{
+  /*background-color: #e67e22;*/
+}
+
+div.input-group-append > .btn{
+  padding:0 10px;
+}
+
+#card-form,#sidebar{
+	margin-top:30px;
+}
+
+/*a.navbar-brand{
+	margin-left:10px;
+	color:#C4E538 !important;
+	font-size:25px;
+	font-family: 'Fredoka One', cursive;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+}*/
+
+/*#navbar img{
+	max-height: 45px;
+}
+
+#navbar a, #navbar a:visited{
+}*/
+
+label.custom-no-padding-top{
+	padding-top:0;
+}
+
+/* dropzonejs */
+
+.dropzone{
+	border: 1px dashed rgba(0, 0, 0, 0.3);	
+}
+.dz-message{
+	font-size:12pt;
+	color:#999;
+}
+
+
+/* https://disjfa.github.io/bootstrap-tricks/card-collapse-tricks/ */
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(90deg);
+}
+
+p.card-text{
+	margin-bottom:5px;
+}
