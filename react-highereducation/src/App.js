@@ -317,7 +317,7 @@ class App extends Component {
                 </div>
             </Col>
 
-            <Col xs={12} sm={12} md={6} lg={6} className="order-first">
+            <Col xs={12} sm={12} md={6} lg={6}>
                 <div className="result-list-container">
                 {/*<h3>Suchergebnisse</h3>*/}
                 <SelectedFilters />
