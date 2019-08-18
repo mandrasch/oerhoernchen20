@@ -4,7 +4,10 @@
         "info":"HOOU portal - no rel license no lrmi source code :((",
         "project_key":"hoou",
         "allowed_domains":["hoou.de"],
-        "start_urls":["https://www.hoou.de/materials/"],
+        "start_urls":[
+          "https://www.hoou.de/materials/alltag-aneignung-und-eigensinn-zugange-zur-geschichte-hamburgs-wahrend-der-nationalsozialistischen-herrschaft",
+          "https://www.hoou.de/materials/arbeitsmaterialien-zur-alten-geschichte",
+          "https://www.hoou.de/materials/ruvival-on-raw-earth-construction"],
         "rules_parse_item_allow":[".*\\/materials\\/.*"],
         "exclude_pages_with_no_cc_license":0
     },

@@ -24,7 +24,7 @@ class Appbase {
 		// 2DO: error handling
 	}
 
-	public function publish_to_index_and_log_in_database($index, $sanitized_object_data, $user_id, $imgur_url, $imgur_delete_hash, $time) {
+	public function publish_to_index_and_log_in_database($index, $sanitized_object_data, $user_id=null, $imgur_url=null, $imgur_delete_hash=null, $time=null) {
 
 		log_message('debug', "Publish to index start");
 
@@ -43,8 +43,9 @@ class Appbase {
 		case 'official':
 		case 'github':
 		case 'playground':
+		case 'highereducation':
 			$appbase_auth_string = $this->CI->config->item('appbase_auth_string_write_' . $index);
-			$appbase_api_url = $this->CI->config->item('appbase_api_url_official') . '/' . $this->CI->config->item('appbase_app_name_' . $index) . '/_doc/';
+			$appbase_api_url = $this->CI->config->item('appbase_api_url_official') . '/' . $this->CI->config->item('appbase_app_name_' . $index) ;
 			break;
 		default:
 			show_error('Unexpected index value', 500);
@@ -61,8 +62,57 @@ class Appbase {
 		log_message('debug', 'URL: ' . $appbase_api_url);
 		log_message('debug', 'Appbase auth string has length: ' . strlen($appbase_auth_string));
 
+		// check if url is already in index, so we can updated
+		// import use .keyword, url is analyzed by elastic
+		custom_log_message("check if url exists in index: ".$sanitized_object_data->main_url);
+		$request_params = array(
+			'query'=> array(
+				'match'=>array(
+					'main_url.keyword'=>$sanitized_object_data->main_url
+				)
+			)//,
+			//'size'=>0
+			// size 0 will not get any results
+		);
+		$query_fields = json_encode($request_params);
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => $appbase_api_url,
+			CURLOPT_URL => $appbase_api_url. '/_search/',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => $query_fields,
+			CURLOPT_HTTPHEADER => array(
+				"Authorization: Basic " . base64_encode($appbase_auth_string) . "",
+				"Content-Type: application/json",
+			),
+		));
+		$responseAppbaseRaw = curl_exec($curl);
+		print_r($responseAppbaseRaw);
+
+		// 2DO: check for errors
+		// 2DO: analyze "hits":{"total":{"value":23,
+		// "hits":{"total":{"value":23,"relation":"eq"},"max_score":7.765152,"hits":[{"_index":"oerhoernchen20-highereducation","_type":"_doc","_id":
+
+		// 2DO: there should be only one item with main_url=main_url, but maybe something went wrong ;-)
+
+		$responseObjectQueryForMainUrl = json_decode($responseAppbaseRaw);
+		custom_log_message("Query result to check if url is already in index ".$responseObjectQueryForMainUrl->hits->total->value );
+		if($responseObjectQueryForMainUrl->hits->total->value > 0){
+			custom_log_message("We update the document with id ".$responseObjectQueryForMainUrl->hits->hits[0]->_id);
+			$urlIndexOrUpdate = $appbase_api_url. '/_update/'.$responseObjectQueryForMainUrl->hits->hits[0]->_id;
+		}
+		else{
+			// we index new document
+			custom_log_message("We create a new document");
+			$urlIndexOrUpdate = $appbase_api_url. '/_doc/';
+		}
+
+		// index a new document / update it
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $urlIndexOrUpdate,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => "",
 			CURLOPT_MAXREDIRS => 10,

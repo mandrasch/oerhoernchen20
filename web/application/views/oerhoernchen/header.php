@@ -11,6 +11,8 @@ $header_subtitle = isset($header_subtitle) ? $header_subtitle : '';
 $pages = array(
 	'Alle Lesezeichen' => site_url('lesezeichen/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
 	'Playground-Lesezeichen' => site_url('lesezeichen/playground/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+	'Hochschule'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+	'Klimakrise'=>'',
 	'Hinzufügen' => site_url('lesezeichen/hinzufuegen'),
 	'Feedback' => site_url('/#feedback'),
 	//'Google-Suche' => 'suche/',
@@ -106,5 +108,3 @@ $general_css_files = array(
 
 
 <?php //var_dump(ENVIRONMENT);?>
-
-

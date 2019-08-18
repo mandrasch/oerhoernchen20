@@ -64,5 +64,7 @@ $route['lesezeichen/playground'] = 'oerhoernchen/community_bookmarks/playground'
 $route['backoffice'] = 'oerhoernchen/backoffice';
 $route['backoffice/(:any)'] = 'oerhoernchen/backoffice/$1';
 
+$route['hochschule'] = 'oerhoernchen/higher_education';
+
 // 2DO: add old urls
 $route['suche'] = 'googlesearch';

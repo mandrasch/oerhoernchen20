@@ -9,68 +9,72 @@ class HtmlAnalyzer
 
   // fields we try to retrieve :)
     // (these are our internal fields for the elastic index)
-    private $md = array(
-    'title'=>'',
-    'description'=>'',
-    'creator'=>'',
-    'license_url'=>'',
-    'license_type'=>'',
-    'created_year'=>'',
-    'educational_sectors'=>[],
-    'thumbnail_url'
-  );
-
-    private function log($message, $type="debug")
-    {
-        if (is_cli()) {
-            echo "{$message}".PHP_EOL;
-        } else {
-            log_message($type, $message);
-        }
-    }
-
+    private $md;
 
     public function __construct()
     {
         $this->CI = &get_instance();
     }
 
-    public function get_metadata(){
-      return $this->md;
+    public function get_metadata()
+    {
+        // convert to object
+        return (object) $this->md;
     }
 
     // standard method for retrieving schema.org metadata / LRMI
     public function analyze_html($htmlContent)
     {
-      // 2DO: Copy from Community Bookmarks Controller
+        // 2DO: Copy from Community Bookmarks Controller
     }
 
     /* we need a special HOOU parser, because the portal has no schema.org data in the html source code currently :( */
     public function analyze_html_hoou($htmlContent)
     {
-        $nodes_rel_license = array();
+
+        // clear the fields
+        $this->md = array(
+        'title'=>'',
+        'description'=>'',
+        'creator'=>'',
+        'license_url'=>'',
+        'license_type'=>'',
+        'created_year'=>'',
+        'educational_sectors'=>[],
+        'thumbnail_url'=>''
+      );
+
+        $html = str_get_html($htmlContent);
 
         $this->md['title'] = @$html->find('title', 0)->innertext;
-        $this->log('title set to '.$$this->md['title']);
-        $this->md['description'] = $html->find("meta[name='description']", 0)->content;
+        custom_log_message('title set to '.$this->md['title']);
+        $this->md['description'] = @$html->find("meta[property='description']", 0)->content;
 
         // unfortunately no rel="license" on hoou.de, so we just parse all links
+        custom_log_message('Links found: '.count($html->find('a')));
         foreach ($html->find('a') as $element) {
-            if (strpos($element->href, "https://creativecommons.org/")) {
+            //$this->log('Analyze link: '.$element->href);
+            if (strpos($element->href, "creativecommons.org/") !== FALSE) {
                 $this->md['license_url'] = $element->href;
-                return; // we just take the first one
+                break; // we just take the first one
             }
         }
+        custom_log_message('Set license url set to: '.$this->md['license_url']);
 
         if ($this->md['license_url'] !== '') {
             $this->md['license_type'] = $this->get_license_type_by_url($this->md['license_url']);
+            custom_log_message('Set license type to: '.$this->md['license_type']);
         } else {
-            $this->log('No license url found, type could not be set', "error");
+            custom_log_message('No license url found, type could not be set', "error");
         }
 
+        $this->md['thumbnail_url'] = @$html->find("meta[property='og:image']", 0)->content;
+
+        //<meta name="language" content="DE">
         // 2DO: parse author, etc. (later)
 
-        array_push($this->md['educational_sectors'], "higher_education");
+        // default values
+        array_push($this->md['educational_sectors'], "highereducation");
     } // eo if
 
 

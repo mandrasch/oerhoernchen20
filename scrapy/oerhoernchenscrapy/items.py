@@ -9,10 +9,11 @@ import scrapy
 
 
 class OerhoernchenscrapyItem(scrapy.Item):
-	
+
     # define the fields for your item here like:
     # name = scrapy.Field()
     project_key = scrapy.Field()
+	filename = scrapy.Field()
     project_url = scrapy.Field() #or key?
     page_url = scrapy.Field()
     meta_title = scrapy.Field()

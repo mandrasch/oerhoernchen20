@@ -1,3 +1,9 @@
+
+result_data/*
+html_exports/*
+
+# python gitgnore from github:
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

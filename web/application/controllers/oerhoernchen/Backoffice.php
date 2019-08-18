@@ -9,16 +9,16 @@ class Backoffice extends CI_Controller {
 		parent::__construct();
 
 		/* pro login */
-		$this->load->model("user_model");
+		/*$this->load->model("user_model");
 		if (!$this->user->loggedin) {
 			redirect(site_url("login"));
-		}
+		}*/
 
 		// ID = 2 -> editorialstaff
-		if (!$this->user_model->check_user_in_group($this->user->info->ID, 2)) {
+		/*if (!$this->user_model->check_user_in_group($this->user->info->ID, 2)) {
 			// 2DO: is show_error the best solution?
 			show_error("You are not in the User Group Friends so you cannot view this page!");
-		}
+		}*/
 
 		# single group (by id)
 		/*$group = 1;
@@ -165,6 +165,7 @@ class Backoffice extends CI_Controller {
 		// $this->_backoffice_output($output);
 
 	}
+
 
 	// 2DO: get all not submitted entries
 

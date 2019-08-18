@@ -176,7 +176,7 @@ class App extends Component {
                     }
                     />
 
-                    <MultiDataList 
+                {  /*  <MultiDataList
                     componentId="educationalSectorsFilter"
                     dataField = "educational_sectors.keyword"
                     className = "filter"
@@ -190,9 +190,9 @@ class App extends Component {
                     }
                     URLParams = {
                         true
-                    } />
+                    } /> */ }
                 {/* use .keyword or not?!*/}
-                    <MultiDataList
+                {  /*  <MultiDataList
                     componentId="schoolSubjectsFilter"
                     dataField = "school_subjects"
                     className = "filter"
@@ -208,7 +208,7 @@ class App extends Component {
                     showCount = {
                         false
                     }
-                    />
+                    />*/}
 
                     <MultiDataList
                     componentId="higherEducationSubjectsFilter"
@@ -250,20 +250,20 @@ class App extends Component {
                       URLParams={false}
                     />*/}
 
-                    <DateRange
+                    {/*<DateRange
                       componentId="entryAddedFilter"
                       dataField="entry_added"
                       title="Hinzugefügt"
                       className="filter"
                       queryFormat="basic_date_time"
-                    />
+                    />*/}
 
-                    <MultiList
+                    {/*<MultiList
                     componentId="tagsFilter"
                     dataField="tags.keyword"
                     className="filter"
                     title="Tags"
-                    />
+                    />*/}
 
 
                 </div>
@@ -275,11 +275,12 @@ class App extends Component {
                 <SelectedFilters />
                 <ReactiveList
                 componentId="SearchResults"
-                dataField = "entry_added"
+                /*dataField = "entry_added"*/
+                /*dataField="main_url"*/
                 className = "search-results-container"
                 pagination
                 URLParams
-                sortBy="desc"
+                /*sortBy="desc"*/
                 /*sortOptions={[
                     {
                       label: "Best Match",
@@ -295,16 +296,13 @@ class App extends Component {
                 // add all filters here - IMPORTANT!
                 react={{
                     "and": [
-                    "educationalSectorsFilter",
+
                     "licenseTypeFilter",
                     "higherEducationSubjectsFilter",
-                    "schoolSubjectsFilter",
                     "speciaTopicsFilter",
                     "searchFilter",
-                    "entryAddedFilter",
                     "generalTypesFilter",
-                    "technicalFormatsFilter",
-                    "tagsFilter"]
+                    "technicalFormatsFilter"]
                 }}
                 render = {
                     ({
@@ -317,10 +315,10 @@ class App extends Component {
                                         <div className="card-body" id={'entry-'+item._id}>
 
                                             { typeof item.thumbnail_url !== 'undefined' && item.thumbnail_url != '' &&
-                                                <a href={item.main_url}><img src={item.thumbnail_url} className="thumbnail rounded float-right" alt="..." /></a>
+                                                <a href={item.main_url} target="_blank"><img src={item.thumbnail_url} className="thumbnail rounded float-right" alt="..." /></a>
                                             }
 
-                                            <a href={item.main_url}><h4 className="card-title">{item.title}</h4></a>
+                                            <a href={item.main_url} target="_blank"><h4 className="card-title">{item.title}</h4></a>
                                             <p className="card-text">{item.description.substr(0,600)}</p>
 
                                             <div className="hiddenDetails">
@@ -413,7 +411,7 @@ class App extends Component {
             </Col>
           </Row>
           <Row>
-            <Col lg={12}>Footer</Col>
+            <Col lg={12}></Col>
           </Row>
         </Container>
         {/* eo new react-bootstrap layout */}

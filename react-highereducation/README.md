@@ -1,4 +1,28 @@
 
+# Start
+
+> npm start
+
+# Build (now via webpack)
+
+> npm run build
+
+Afterwards: Copy oerhoerchen.community_bookmarks.js to codeigniter website
+
+# Publish to github pages
+
+> npm run deploy
+
+-- 
+
+
+
+SEE DOCS in /react/
+
+
+
+
+
 THIS IS THE FOLDER FOR CREATION OF
 /web/assets/js/oerhoernchen.community_bookmarks.js
 

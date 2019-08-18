@@ -1,4 +1,13 @@
-# BASIC SPIDER (python3, scrapy 1.6)
+# THIS IS A NEW SPIDER
+# WE JUST COLLECT ALL URLS MATCHING OUR SELECTORS
+# e.g. hoou has no machine readable licenses
+# we parse them later with PHP
+# goal is just to have the html files exported
+
+
+
+
+# SPIDER (python3, scrapy 1.6)
 # use case options, can be mixed
 # I. pages without machine readable license, but general license e.g. http://www.inf-schule.de/ (use manual_license_override)
 # II. page with machine readable licenses page by page
@@ -22,6 +31,9 @@ import re
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.exceptions import CloseSpider
+import uuid
+
+from pathlib import Path
 
 # required params:
 # domain
@@ -36,15 +48,15 @@ from scrapy.exceptions import CloseSpider
 # init will load as as attribute string
 # self.project_key
 
-class BasicSpider(CrawlSpider):
-    name = 'basic'
+class HtmlexportSpider(CrawlSpider):
+    name = 'htmlexport'
     # crawled pages count
     count = 0
 
     # CLI Call:
     # http://doc.scrapy.org/en/latest/topics/spiders.html#spider-arguments
     def __init__(self, project_key=None,limit=0, *args, **kwargs):
-        super(BasicSpider, self).__init__(*args, **kwargs)
+        super(HtmlexportSpider, self).__init__(*args, **kwargs)
 
         # for testing purposes (-a limit=10), 0 as default and no restriction
         self.COUNT_MAX = int(limit)
@@ -113,7 +125,7 @@ class BasicSpider(CrawlSpider):
 
         # important: recompile rules
         # https://stackoverflow.com/questions/27509489/how-to-dynamically-set-scrapy-rules
-        super(BasicSpider, self)._compile_rules()
+        super(HtmlexportSpider, self)._compile_rules()
 
         #eo init
 
@@ -154,19 +166,31 @@ class BasicSpider(CrawlSpider):
 
         # https://stackoverflow.com/questions/46067258/scrapy-save-response-body-as-html-file
 
+        # save html as export file
+        filename = str(uuid.uuid4())+".html"
+
+        # 2DO: clean folder before?
+        data_folder = Path("html_exports/")
+        file_to_open = data_folder / filename
+
+        self.html_file = open(file_to_open, 'w')
+        self.html_file.write(response.text)
+        self.html_file.close()
+
+
         scraped_info = {
             'project_key':self.projectSettings['project_key'],
+            'filename':filename,
             # 'project_url':self.start_urls[0],
             'page_url':response.url,
             'meta_title':response.xpath('//title/text()').extract(),
-            'meta_description':response.xpath('//meta[@name=\'description\']/@content').extract(),
-            'meta_keywords':response.xpath('//meta[@name=\'keywords\']/@content').extract(),
-            'og_title':response.xpath('//meta[@name=\'og:title\']/@content').extract(),
-            'a_rel_license':response.css('a[rel=license]::attr(href)').extract_first(),
-            'link_rel_license':response.css('link[rel=license]::attr(href)').extract_first(),
-            'link_rel_copyright':response.css('link[rel=copyright]::attr(href)').extract_first(),
-            'content':response.xpath('//body//p//text()').extract(),
-            'manual_license_override':manualLicenseOverride
+            #'meta_description':response.xpath('//meta[@name=\'keywords\']/@content').extract(),
+            #'og_title':response.xpath('//meta[@name=\'og:title\']/@content').extract(),
+            #'a_rel_license':response.css('a[rel=license]::attr(href)').extract_first(),
+            #'link_rel_license':response.css('link[rel=license]::attr(href)').extract_first(),
+            #'link_rel_copyright':response.css('link[rel=copyright]::attr(href)').extract_first(),
+            #'content':response.xpath('//body//p//text()').extract(),
+            #'manual_license_override':manualLicenseOverride
         }
 
         # export to item list:

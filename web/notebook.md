@@ -1,3 +1,6 @@
+Matthiass-Air:scrapy admin$ tail -f /Users/admin/webserver/2019-oerhoernchen20/web/application/logs/log-2019-08-17.php 
+
+
 https://codecanyon.net/item/pro-login-advanced-secure-php-user-management-system/12388905
 Version 2.1 (Released 30/04/2019)
 
@@ -18,7 +21,7 @@ http://localhost/2019-oerhoernchen20-prologin/install/
 
 IMPORTANT: Once you have installed the product, please delete the file application/controllers/install.php! This will prevent other users from messing up your settings. Please also delete setup.php and setup_db.sql in the main directory.
 
-# Packaging 
+# Packaging
 
 https://www.codeigniter.com/user_guide/libraries/loader.html
 
@@ -34,7 +37,7 @@ https://www.codeigniter.com/user_guide/libraries/loader.html
 
 # Install
 
-Use /config/development, needs database, ion_auth, appbase-config file 
+Use /config/development, needs database, ion_auth, appbase-config file
 
 # Submissions
 
@@ -42,4 +45,3 @@ There are two options
 
 - a) User is verified by staff, can publish directly to index
 - b) User is not verifified/anon users, entries must be allowed by staff in backoffice
-

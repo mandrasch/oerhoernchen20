@@ -23,6 +23,12 @@
 	  <li class="nav-item">
 	    <a class="nav-link" href="<?php echo site_url('auth/') ?>">User Management</a>
 	  </li>
+    <li class="nav-item">
+	    <a class="nav-link" href="<?php echo site_url('oerhoernchen/cli/import_scrapy_json_results') ?>">IMPORT SCRAPY RESULTS</a>
+	  </li>
+    <li class="nav-item">
+	    <a class="nav-link" href="<?php echo site_url('oerhoernchen/cli/crawl_hoou') ?>">Crawl HOOU.de</a>
+	  </li>
 	</ul>
 	</div>
 
