@@ -375,7 +375,7 @@ class App extends Component {
                                             <p className="card-text">
                                             {/*item.description !== null && item.description.substr(0,600)
                                               https://stackoverflow.com/a/27981876 */}
-                                            <Interweave content={(item.description || "").substr(0,600)} />;
+                                            <Interweave content={(item.description || "").substr(0,600)} />
                                             </p>
 
                                             <div className="hiddenDetails">
