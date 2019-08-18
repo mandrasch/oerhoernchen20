@@ -53,8 +53,17 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-
+ // BY MA
+ // STRANGE APACHE BUG - appends REDIRECT_ before env
+ if (isset($_SERVER['REDIRECT_CI_ENV'])) {
+ 	$envSet = $_SERVER['REDIRECT_CI_ENV'];
+ }
+ if (isset($_SERVER['CI_ENV'])) {
+ 	$envSet = $_SERVER['CI_ENV'];
+ }
+ define('ENVIRONMENT', isset($envSet) ? $envSet : 'development');
+ //define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+ // EO BY MA
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
