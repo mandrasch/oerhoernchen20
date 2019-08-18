@@ -11,7 +11,7 @@
           <!-- <h5 class="card-title">Special title treatment</h5> -->
           <p><i>Ich stimme der Aufzeichnung der Analysedaten (Suchbegriffe, Suchverhalten, Interaktionen auf der Webseite - ohne Personenbezug, siehe unten - Anbieter Appbase Inc., USA) zu und habe die Datenschutzerklärung (siehe unten) gelesen und zur Kenntnis genommen.</i></p>
 
-          <p>Ich nehme außerdem zur Kenntnis, dass Vorschaubilder von externen Servern geladen werden und somit meine Browser- und Verbindungsdaten übermittelt werden.</p>
+          <p><i>Ich nehme außerdem zur Kenntnis, dass Vorschaubilder von externen Servern geladen werden und somit meine Browser- und Verbindungsdaten übermittelt werden.</i></p>
 
           <p>Die Entscheidung wird mittels eines Session-Cookies für 2h gespeichert.</p>
           <?php if($privacy_notice_accepted === FALSE): ?>
