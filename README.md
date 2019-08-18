@@ -16,7 +16,7 @@ Quick & dirty prototype
 2. "npm run build" to build production version
 3. Appbase config values (API-url, API-key) can be added in /public/index.html (Please use your own due to rate limiting on my instances)
 
-# Open Source Software used <3
+## Open Source Software used <3
 
 - Codeigniter https://www.codeigniter.com/
 - Codeigniter Ion Auth https://github.com/benedmunds/CodeIgniter-Ion-Auth
@@ -25,6 +25,10 @@ Quick & dirty prototype
 - ReactJS https://reactjs.org/
 - Bootstrap https://getbootstrap.com/docs/4.0/getting-started/introduction/
 
-# Elastic search service
+## Elastic search service
 
 - Appbase https://appbase.io/
+
+## LICENSE
+
+Feel free to use all source code created by me via https://creativecommons.org/publicdomain/zero/1.0/, does not apply to external source code provided by other projects
