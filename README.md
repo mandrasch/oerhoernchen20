@@ -1,5 +1,7 @@
 Quick & dirty prototype
 
+Live demo: https://beta2.oerhoernchen.de/hochschule/?licenseTypeFilter=%5B%22CC0%22%2C%22CC+BY%22%2C%22CC+BY-SA%22%5D
+
 ## Install web frontend
 
 1. setup config (database.php, base_url in config.php, appbase) - use /config/development/ folder, I provided examples in config/example-env
