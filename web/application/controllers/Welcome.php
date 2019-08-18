@@ -10,6 +10,21 @@ class Welcome extends CI_Controller {
 		if (!$this->user->loggedin) {
 			redirect(site_url("login"));
 		}*/
+
+		$logged_in = $this->ion_auth->logged_in();
+
+		if ($logged_in) {
+			$this->user_id = $this->ion_auth->user()->row()->id;
+		} else {
+			$this->user_id = null;
+		}
+		log_message('debug', 'USERID: ' . $this->user_id);
+
+		// add data to views
+		$data['logged_in'] = $logged_in;
+		$this->load->vars($data);
+
+
 	}
 
 	/**

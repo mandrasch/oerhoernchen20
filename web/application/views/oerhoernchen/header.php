@@ -8,18 +8,26 @@ $meta_featured_image = isset($meta_featured_image) ? $meta_featured_image : ''; 
 $header_title = isset($header_title) ? $header_title : 'OERhörnchen';
 $header_subtitle = isset($header_subtitle) ? $header_subtitle : '';
 
-$pages = array(
-	'Alle Lesezeichen' => site_url('lesezeichen/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
-	'Playground-Lesezeichen' => site_url('lesezeichen/playground/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
-	'Hochschule'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
-	'Klimakrise'=>'',
-	'Hinzufügen' => site_url('lesezeichen/hinzufuegen'),
-	'Feedback' => site_url('/#feedback'),
-	//'Google-Suche' => 'suche/',
-	//'Bildungsteiler' => 'bildungsteiler',
-	//'Werkzeuge' => 'Werkzeuge', // 2DO: use dropdown
-	//'Über' => 'about', // 2DO: take
-);
+if($logged_in){
+	$pages = array(
+		'Alle Lesezeichen' => site_url('lesezeichen/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Playground-Lesezeichen' => site_url('lesezeichen/playground/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Hochschule'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Klimakrise'=>'',
+		'Hinzufügen' => site_url('lesezeichen/hinzufuegen'),
+		//'Feedback' => site_url('/#feedback'),
+		//'Google-Suche' => 'suche/',
+		//'Bildungsteiler' => 'bildungsteiler',
+		//'Werkzeuge' => 'Werkzeuge', // 2DO: use dropdown
+		//'Über' => 'about', // 2DO: take
+	);
+}else{
+	$pages = array(
+		'Hochschule'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Klimakrise'=>'',
+	);
+}
+
 
 $general_css_files = array(
 	'bootstrap.min.css',

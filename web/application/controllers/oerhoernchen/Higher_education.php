@@ -13,6 +13,19 @@ class Higher_education extends CI_Controller
     if(is_null($this->session->userdata('privacy_notice_accepted'))){
       redirect('oerhoernchen/privacy');
     }
+
+    $logged_in = $this->ion_auth->logged_in();
+
+    if ($logged_in) {
+      $this->user_id = $this->ion_auth->user()->row()->id;
+    } else {
+      $this->user_id = null;
+    }
+    log_message('debug', 'USERID: ' . $this->user_id);
+
+    // add data to views
+    $data['logged_in'] = $logged_in;
+    $this->load->vars($data);
   }
 
 

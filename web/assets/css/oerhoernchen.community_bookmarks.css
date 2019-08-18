@@ -62,7 +62,7 @@ label.custom-no-padding-top{
 /* dropzonejs */
 
 .dropzone{
-	border: 1px dashed rgba(0, 0, 0, 0.3);	
+	border: 1px dashed rgba(0, 0, 0, 0.3);
 }
 .dz-message{
 	font-size:12pt;
@@ -81,4 +81,8 @@ label.custom-no-padding-top{
 
 p.card-text{
 	margin-bottom:5px;
+}
+
+.text-muted > a,.text-muted a:visited{
+	color: #6c757d!important;
 }

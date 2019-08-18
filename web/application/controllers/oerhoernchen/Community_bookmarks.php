@@ -13,14 +13,38 @@ class Community_bookmarks extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		/* pro login */
-		$this->load->model("user_model");
-		if (!$this->user->loggedin) {
-			redirect(site_url("login"));
+
+		// 2DO: put in helper or custom controller?
+		/* ion auth way */
+
+		$logged_in = $this->ion_auth->logged_in();
+
+		// protect controller
+		if (!$logged_in)
+		{
+			 redirect('auth/login');
 		}
 
-		$this->user_id = $this->user->info->ID;
+		if ($logged_in) {
+			$this->user_id = $this->ion_auth->user()->row()->id;
+		} else {
+			$this->user_id = null;
+		}
 		log_message('debug', 'USERID: ' . $this->user_id);
+
+		// add data to views
+		$data['logged_in'] = $logged_in;
+		$this->load->vars($data);
+
+		/* pro login */
+		/*$this->load->model("user_model");
+		if (!$this->user->loggedin) {
+			redirect(site_url("login"));
+		}*/
+
+		// pro login $this->user_id = $this->user->info->ID;
+
+
 
 		$this->load->library('form_validation');
 		$this->load->library('session');
@@ -28,7 +52,7 @@ class Community_bookmarks extends CI_Controller {
 		$this->load->database();
 		//$this->load->library('ion_auth');
 
-		// 2DO: put in helper or custom controller?
+
 		/*if ($this->ion_auth->logged_in()) {
 			$this->user_id = $this->ion_auth->user()->row()->id;
 		} else {
@@ -108,8 +132,12 @@ class Community_bookmarks extends CI_Controller {
 	public function add() {
 		$this->config->load('oerhoernchen');
 		// prologin patchesoft
-		$jsCssData['is_editorial_staff'] = $this->user_model->check_user_in_group($this->user->info->ID, $this->config->item('oerhoernchen_group_id_editorial_staff'));
+		//$jsCssData['is_editorial_staff'] = $this->user_model->check_user_in_group($this->user->info->ID, $this->config->item('oerhoernchen_group_id_editorial_staff'));
 		// eo prologin patchesoft
+
+		// Ion_auth
+		// 2DO: Add role/group check
+		$jsCssData['is_editorial_staff'] = $this->ion_auth->logged_in();
 
 		$jsCssData['css_files'] = array(
 			base_url() . 'assets/css/dropzone.css',

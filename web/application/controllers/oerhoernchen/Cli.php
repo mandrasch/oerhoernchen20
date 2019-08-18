@@ -8,6 +8,25 @@ class Cli extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
+		$logged_in = $this->ion_auth->logged_in();
+
+		// protect controller
+		if (!$logged_in)
+		{
+			 redirect('auth/login');
+		}
+
+		if ($logged_in) {
+			$this->user_id = $this->ion_auth->user()->row()->id;
+		} else {
+			$this->user_id = null;
+		}
+		log_message('debug', 'USERID: ' . $this->user_id);
+
+		// add data to views
+		$data['logged_in'] = $logged_in;
+		$this->load->vars($data);
+
 		/* pro login */
 		/*$this->load->model("user_model");
 		if (!$this->user->loggedin) {
