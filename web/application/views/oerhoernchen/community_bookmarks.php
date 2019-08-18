@@ -8,3 +8,9 @@
 </script>
 
 <div id="root"></div>
+
+<div class="row">
+	<div class="mx-auto col-lg-9 col-sm-12">
+		<div class="text-center"><small>Dieser Prototyp wird derzeit mit einem Free-Plan bei appbase.io betrieben, ggf. wird das Zugriffslimit erreicht bei zu vielen Abrufen. Viel Spaß beim Ausprobieren & gerne bei <a href="http://twitter.com/oerhoernchen">Twitter</a> folgen! </small></div>
+	</div>
+</div>

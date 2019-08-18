@@ -30,9 +30,11 @@ $general_js_files = array(
 <div class="row">
   <div class="col-12 text-center">
 <ul class="nav justify-content-center">
+	<?php if($logged_in): ?>
   <li class="nav-item">
     <a class="nav-item nav-link" href="<?php echo site_url('backoffice'); ?>">Backoffice</a>
   </li>
+<?php endif; ?>
   <li class="nav-item">
     <a class="nav-link" target="_blank" href="https://blog.matthias-andrasch.de/impressum">Impressum</a>
   </li>

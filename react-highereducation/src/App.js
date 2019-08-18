@@ -24,6 +24,7 @@ import {
     DateRange
 } from '@appbaseio/reactivesearch';
 import Interweave from 'interweave';
+import Lightbox from "react-simple-lightbox";
 
 import './App.css';
 
@@ -203,7 +204,7 @@ class App extends Component {
                 componentId="oerhoernchenProjectKeyFilter"
                 dataField = "projectkey"
                 className = "filter"
-                title = "SubIndex"
+                title = "Datenquelle"
                 data={[{
                     "label":"OERBW/ZOERR",
                     "value":"zoerr"
@@ -361,11 +362,15 @@ class App extends Component {
 
                                         <div className="card-body" id={'entry-'+item._id}>
 
+                                            <a href={item.main_url} target="_blank"><h4 className="card-title">{item.title}</h4></a>
+
                                             { typeof item.thumbnail_url !== 'undefined' && item.thumbnail_url != '' &&
-                                                <a href={item.main_url} target="_blank"><img src={item.thumbnail_url} className="thumbnail rounded float-right" alt="..." /></a>
+                                              <Lightbox>
+                                                <img src={item.thumbnail_url} className="thumbnail rounded float-left" alt="..." />
+                                                </Lightbox>
                                             }
 
-                                            <a href={item.main_url} target="_blank"><h4 className="card-title">{item.title}</h4></a>
+
 
                                             <p className="card-text">
                                             {/*item.description !== null && item.description.substr(0,600)

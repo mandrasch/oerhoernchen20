@@ -37,7 +37,7 @@ class Privacy extends CI_Controller
 
   function accept_privacy_notice(){
       $this->session->set_userdata(array('privacy_notice_accepted'=>TRUE));
-      redirect("oerhoernchen/higher_education"); // 2DO: maybe from other page redirected?
+      redirect("hochschule"); // 2DO: maybe from other page redirected?
   }
 
   function remove_decision(){

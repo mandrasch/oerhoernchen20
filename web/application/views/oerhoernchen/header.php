@@ -24,7 +24,7 @@ if($logged_in){
 }else{
 	$pages = array(
 		'Hochschule'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
-		'Klimakrise'=>'',
+		//'Klimakrise'=>'',
 	);
 }
 

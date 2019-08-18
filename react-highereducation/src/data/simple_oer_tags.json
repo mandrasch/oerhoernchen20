@@ -138,14 +138,6 @@
     }, {
         "label": "CC BY-NC-ND",
         "value": "ccbyncnd"
-    }, 
-    {
-        "label": "Ohne freie Lizenz :(",
-        "value": "regularcopyright"
-    },
-    {
-        "label": "Sonstige Lizenzen",
-        "value": "other"
     }],
     "school_subjects": [{
         "label": "Arbeit und Beruf",

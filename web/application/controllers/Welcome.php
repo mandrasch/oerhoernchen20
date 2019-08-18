@@ -47,8 +47,8 @@ class Welcome extends CI_Controller {
 		//$data['user_email'] = $user->email;
 		//$this->load->view('welcome_message', $data);
 		$headerData = array(
-			'header_title' => 'Community-Lesezeichen',
-			'header_subtitle' => 'Gemeinsam gute OER-Materialien sammeln',
+			'header_title' => 'OERhörnchen 2.0 Beta',
+			'header_subtitle' => 'Gemeinsam gute OER-Materialien sammeln und finden',
 		);
 		$this->load->view('oerhoernchen/header.php', $headerData);
 		$this->load->view('oerhoernchen/welcome');

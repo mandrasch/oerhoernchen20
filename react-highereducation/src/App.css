@@ -57,12 +57,15 @@ a.navbar-brand{
 }*/
 
 .thumbnail{
-	width:150px;
-	margin-left:10px;
+	max-width:200px;
+	margin-right:15px;
 	margin-bottom: 10px;
 }
 
-
+.lightbox-wrapper{
+	float:left;
+	margin-top:5px;
+}
 
 /* from booksearch example */
 /* https://codesandbox.io/s/9167mmkqlo?source=post_page--------------------------- */
