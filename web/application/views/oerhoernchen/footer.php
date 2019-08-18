@@ -41,6 +41,9 @@ $general_js_files = array(
   <li class="nav-item">
     <a class="nav-link" href="<?php echo site_url("oerhoernchen/privacy");?>">Datenschutz</a>
   </li>
+	<li class="nav-item">
+		<a class="nav-link" href="https://github.com/programmieraffe/oerhoernchen20" target="_blank">Github</a>
+	</li>
 </ul>
 
   </div>
