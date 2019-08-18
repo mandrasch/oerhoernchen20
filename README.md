@@ -27,7 +27,7 @@ Quick & dirty prototype
 
 ## Elastic search service
 
-- Appbase https://appbase.io/
+- Appbase https://appbase.io/ - Much love for providing a free plan :) <3
 
 ## LICENSE
 
