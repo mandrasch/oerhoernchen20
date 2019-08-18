@@ -1,4 +1,9 @@
 
+body{
+	/* fix for firefox*/
+	overflow-x: hidden;
+}
+
 .alert{
 	  font-family:'Open Sans',Arial;
 }
