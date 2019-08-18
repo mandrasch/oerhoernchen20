@@ -6,6 +6,16 @@ require_once APPPATH . 'third_party/simple_dom_parser/simple_dom_parser.php';
 class Higher_education extends CI_Controller
 {
 
+  public function __construct() {
+    parent::__construct();
+    $this->load->library('session');
+    //var_dump($this->session);
+    if(is_null($this->session->userdata('privacy_notice_accepted'))){
+      redirect('oerhoernchen/privacy');
+    }
+  }
+
+
 // show the official index
     public function index()
     {

@@ -34,10 +34,10 @@ $general_js_files = array(
     <a class="nav-item nav-link" href="<?php echo site_url('backoffice'); ?>">Backoffice</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Impressum</a>
+    <a class="nav-link" target="_blank" href="https://blog.matthias-andrasch.de/impressum">Impressum</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Datenschutz</a>
+    <a class="nav-link" href="<?php echo site_url("oerhoernchen/privacy");?>">Datenschutz</a>
   </li>
 </ul>
 

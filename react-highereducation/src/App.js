@@ -23,6 +23,7 @@ import {
     RangeInput,
     DateRange
 } from '@appbaseio/reactivesearch';
+import Interweave from 'interweave';
 
 import './App.css';
 
@@ -146,7 +147,27 @@ class App extends Component {
                       URLParams={true}
                     />
 
+                    {/* FOR LATER:
                     <MultiDataList
+                    componentId="oerhoernchenIndexFilter"
+                    dataField = "oerhoernchen_index"
+                    className = "filter"
+                    title = "SubIndex"
+                    data={[{
+                        "label":"Hochschule",
+                        "value":"highereducation"
+                    }]}
+                    defaultValue={["Hochschule"]}
+                    showSearch = {
+                        false
+                    }
+                    URLParams = {
+                        false
+                    }
+                    size={3}
+                    />*/}
+
+                    {/*<MultiDataList
                     componentId="speciaTopicsFilter"
                     dataField = "special_topics"
                     className = "filter"
@@ -159,7 +180,7 @@ class App extends Component {
                         true
                     }
                     size={3}
-                    />
+                    />*/}
 
                     <MultiDataList
                     componentId="licenseTypeFilter"
@@ -175,6 +196,30 @@ class App extends Component {
                         true
                     }
                     />
+
+
+
+                <MultiDataList
+                componentId="oerhoernchenProjectKeyFilter"
+                dataField = "projectkey"
+                className = "filter"
+                title = "SubIndex"
+                data={[{
+                    "label":"OERBW/ZOERR",
+                    "value":"zoerr"
+                },{
+                    "label":"HOOU-Portal",
+                    "value":"hoou"
+                }]}
+                showSearch = {
+                    false
+                }
+                URLParams = {
+                    true
+                }
+                size={3}
+                />
+
 
                 {  /*  <MultiDataList
                     componentId="educationalSectorsFilter"
@@ -214,7 +259,7 @@ class App extends Component {
                     componentId="higherEducationSubjectsFilter"
                     dataField = "higher_education_subjects"
                     className = "filter"
-                    title = "Hochschule: Fachbereiche"
+                    title = "(coming soon?) Fachbereiche"
                     data={simpleOerTags.higher_education_subjects}
                     showSearch = {
                         false
@@ -224,6 +269,8 @@ class App extends Component {
                     }
                     size={3}
                     showCount={false}
+                    style={{"color": "#ECEBEB"}}
+                    disabled={true}
                     />
 
                     {/*<RangeInput
@@ -276,7 +323,7 @@ class App extends Component {
                 <ReactiveList
                 componentId="SearchResults"
                 /*dataField = "entry_added"*/
-                /*dataField="main_url"*/
+                dataField="_id"
                 className = "search-results-container"
                 pagination
                 URLParams
@@ -296,7 +343,7 @@ class App extends Component {
                 // add all filters here - IMPORTANT!
                 react={{
                     "and": [
-
+                    "oerhoernchenProjectKeyFilter",
                     "licenseTypeFilter",
                     "higherEducationSubjectsFilter",
                     "speciaTopicsFilter",
@@ -319,7 +366,12 @@ class App extends Component {
                                             }
 
                                             <a href={item.main_url} target="_blank"><h4 className="card-title">{item.title}</h4></a>
-                                            <p className="card-text">{item.description.substr(0,600)}</p>
+
+                                            <p className="card-text">
+                                            {/*item.description !== null && item.description.substr(0,600)
+                                              https://stackoverflow.com/a/27981876 */}
+                                            <Interweave content={(item.description || "").substr(0,600)} />;
+                                            </p>
 
                                             <div className="hiddenDetails">
                                                 General types: {item.general_types}<br/>
@@ -336,9 +388,8 @@ class App extends Component {
                                             <img className="thumbnail" src={item.thumbnail_url} alt="Card image cap"/>
                                         </div> */}
                                     <div className="card-footer">
-                                        <small className="text-muted">Lizenz: {item.license_type} | Hinzugefügt am {item.entry_added} | <a className="tulluGenerator" href={'https://beta.oerhoernchen.de/tullu_generator/?id='+item._id}>
-                                                Lizenzhinweis erstellen</a> |  <a className="flagContent" href={'https://beta.oerhoernchen.de/flag/?id='+item._id}>
-                                                Melden</a></small>
+                                        <small className="text-muted">Lizenz: {item.license_type} | Quelle:  {item.projectkey} {/*| Hinzugefügt am {item.entry_added} */}| <a className="tulluGenerator" href={'https://beta.oerhoernchen.de/tullu_generator/?id='+item._id}>
+                                                TULLU-Lizenzhinweis erstellen (coming soon)</a> | <a href={'?searchFilter="'+item.oerhoernchen_id+'"'}>Link</a></small>
                                     </div>
 
 
@@ -380,8 +431,9 @@ class App extends Component {
                     <MultiDataList
                     componentId="generalTypesFilter"
                     dataField = "general_types"
+                    style={{"color": "#ECEBEB"}}
                     className = "filter"
-                    title = "Material ist/enthält"
+                    title = "(coming soon?) Material ist/enthält"
                     data={simpleOerTags.general_types}
                     showSearch = {
                         false
@@ -395,8 +447,9 @@ class App extends Component {
                     componentId="technicalFormatsFilter"
                     dataField = "technical_formats"
                     className = "filter"
-                    title = "Technische Formate"
+                    title = "(coming soon?) Technische Formate"
                     data={simpleOerTags.technical_formats}
+                    style={{"color": "#ECEBEB"}}
                     showSearch = {
                         false
                     }

@@ -1,6 +1,11 @@
 NO WARRANTY! USE THIS ON YOUR OWN RISK!
 PLEASE RESPECT ROBOTS.TXT, RATE LIMITS AND COPYRIGHT!
 
+
+HOOU -> we do it with PHP, see /web/ -> cli controller
+ZOERR -> let's scrape
+scrapy crawl htmlexport -a project_key=zoerr
+
 https://docs.google.com/presentation/d/1lLW2Ma_aKXSAelpsqJCk-zUF5i5GhNchSL7G1KGAPiM/edit?usp=sharing
 
 # Use a spider (Python3, Scrapy 1.6)

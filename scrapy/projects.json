@@ -1,7 +1,14 @@
 [
-
-    {
-        "info":"HOOU portal - no rel license no lrmi source code :((",
+  {
+      "info":"OERBW/ZOERR",
+      "project_key":"zoerr",
+      "allowed_domains": ["oerbw.de"],
+      "start_urls": ["https://oerbw.de/edu-sharing/components/search"],
+      "rules_parse_item_allow":[".*\\/render\\/.*"],
+      "exclude_pages_with_no_cc_license":1
+  },
+  {
+        "info":"HOOU portal - no rel license no lrmi source code :(( - WE DO IT WITH SITEMAP.XML & PHP NOW, NOT SCRAPY",
         "project_key":"hoou",
         "allowed_domains":["hoou.de"],
         "start_urls":[

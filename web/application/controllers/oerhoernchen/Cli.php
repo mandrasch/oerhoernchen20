@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'third_party/simple_dom_parser/simple_dom_parser.php';
 
-// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl_hoou
-
 class Cli extends CI_Controller {
 
 	public function __construct() {
@@ -87,19 +85,38 @@ class Cli extends CI_Controller {
 			return $this->htmlanalyzer->get_metadata();
     }
 
-		public function crawl_hoou(){
+		// BETTER CALL THIS FROM CLI
+		// cd /Users/admin/webserver/2019-oerhoernchen20/web/
+		// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl hoou
+		// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
+		public function crawl($projectkey){
+
+			switch($projectkey){
+				case 'zoerr':
+					$sitemapUrl="https://www.oerbw.de/edu-sharing/eduservlet/sitemap?from=0";
+					$urlStrPosValue="/render/";
+					break;
+				case 'hoou':
+					$sitemapUrl="https://www.hoou.de/sitemap.xml";
+					$urlStrPosValue="hoou.de/materials/";
+					break;
+				default:
+					show_error("No project key provided");
+					break;
+			}
+
 			$this->load->library('oerhoernchen/htmlanalyzer');
 			$this->load->library('oerhoernchen/appbase');
 
 			custom_log_message("Start crawling");
 			// 2DO: Get sitemap file via cURL
-			$sitemapxml = file_get_contents("https://www.hoou.de/sitemap.xml"); // 2DO: error handling
+			$sitemapxml = file_get_contents($sitemapUrl); // 2DO: error handling
 			$sitemapObject = simplexml_load_string($sitemapxml);
 			//var_dump($sitemapObject);
 			// get all links containing "materials/"
 			$urls = [];
 			foreach($sitemapObject as $entry){
-				if(strpos($entry->loc,"hoou.de/materials/") !== FALSE){
+				if(strpos($entry->loc,$urlStrPosValue) !== FALSE){
 					$urls[] = (string) $entry->loc;
 				}
 			}
@@ -108,7 +125,6 @@ class Cli extends CI_Controller {
 
 
 			// 2DO: curl all urls
-
 
 			foreach($urls as $url){
 				custom_log_message("Curling url: ".$url);
@@ -124,13 +140,25 @@ class Cli extends CI_Controller {
 				$responseHtml = curl_exec($ch);
 				// close handle to release resources
 				curl_close($ch);
+				custom_log_message("Sleep 2 seconds to be gentle to the server ... ;-)");
+				sleep(2);
+				// 2DO: catch curl errors and show it (see ajax_add_entry in community_bookmarks)
 
-				// 2DO: catch curl errors and show it
+				switch($projectkey){
+					case 'hoou':
+						$this->htmlanalyzer->analyze_html_hoou($responseHtml);
+						break;
+						case 'zoerr':
+						$this->htmlanalyzer->analyze_html($responseHtml);
+						break;
+					}
 
-				$this->htmlanalyzer->analyze_html_hoou($responseHtml);
 	      //var_dump($this->htmlanalyzer->get_metadata());
 				$sanitizedObjectData = $this->htmlanalyzer->get_metadata();
 				$sanitizedObjectData->main_url = $url;
+				// 2DO: Introduce field to buy just one appbase index?
+				$sanitizedObjectData->oerhoernchen_index = "highereducation";
+				$sanitizedObjectData->projectkey = filter_var($projectkey, FILTER_SANITIZE_STRING);
 				custom_log_message("Sanitized object data: ".print_r($sanitizedObjectData,true));
 				custom_log_message("Publish it to index ...");
 				$resultElasticId = $this->appbase->publish_to_index_and_log_in_database("highereducation", $sanitizedObjectData);

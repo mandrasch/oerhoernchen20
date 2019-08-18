@@ -12,6 +12,7 @@ class Appbase {
 	private function store_entry_log_in_database($elastic_id, $oerhoernchen_id, $json_object_data, $imgur_url, $imgur_delete_hash, $user_id, $time) {
 
 		$data = array(
+			// 2DO: add oerhoernchen_index
 			'oerhoernchen_id' => $oerhoernchen_id,
 			'elastic_id' => $elastic_id,
 			'imgur_url' => filter_var($imgur_url, FILTER_SANITIZE_STRING),
@@ -56,7 +57,6 @@ class Appbase {
 		$object_without_oerhoernchen_id = $sanitized_object_data;
 		$oerhoernchen_id = uniqid(rand(), true);
 		$sanitized_object_data->oerhoernchen_id = $oerhoernchen_id;
-		$json_data = json_encode($sanitized_object_data);
 
 		log_message('debug', 'Try to publish to index ' . $index);
 		log_message('debug', 'URL: ' . $appbase_api_url);
@@ -102,12 +102,23 @@ class Appbase {
 		custom_log_message("Query result to check if url is already in index ".$responseObjectQueryForMainUrl->hits->total->value );
 		if($responseObjectQueryForMainUrl->hits->total->value > 0){
 			custom_log_message("We update the document with id ".$responseObjectQueryForMainUrl->hits->hits[0]->_id);
-			$urlIndexOrUpdate = $appbase_api_url. '/_update/'.$responseObjectQueryForMainUrl->hits->hits[0]->_id;
+
+			// update did not work as excepted
+			// (problem with main_url field), so we just reindex now
+			/*$urlIndexOrUpdate = $appbase_api_url. '/_update/'.$responseObjectQueryForMainUrl->hits->hits[0]->_id;
+			$updateObject = array('doc'=>$sanitized_object_data);
+			$jsonRequestData = json_encode($updateObject);*/
+
+			$urlIndexOrUpdate = $appbase_api_url. '/_doc/'.$responseObjectQueryForMainUrl->hits->hits[0]->_id;
+			$jsonRequestData = json_encode($sanitized_object_data);
+			// "doc": { "name": "Jane Doe" }
+
 		}
 		else{
 			// we index new document
 			custom_log_message("We create a new document");
 			$urlIndexOrUpdate = $appbase_api_url. '/_doc/';
+			$jsonRequestData = json_encode($sanitized_object_data);
 		}
 
 		// index a new document / update it
@@ -119,7 +130,7 @@ class Appbase {
 			CURLOPT_TIMEOUT => 30,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => $json_data,
+			CURLOPT_POSTFIELDS => $jsonRequestData,
 			CURLOPT_HTTPHEADER => array(
 				"Authorization: Basic " . base64_encode($appbase_auth_string) . "",
 				"Content-Type: application/json",
