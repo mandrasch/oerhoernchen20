@@ -58,7 +58,7 @@ a.navbar-brand{
 
 .thumbnail{
 	max-width:200px;
-
+	max-height:150px;
 }
 
 .lightbox-wrapper{
