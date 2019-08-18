@@ -4,19 +4,19 @@
     <div class="row">
       <div class="mx-auto col-lg-9 col-sm-12" style="margin-top:30px;">
         <div class="card">
-        <div class="card-header">
-          Datenschutz und Nutzungsbedingungen zustimmen?
+        <div class="card-header" style="color: #800000;">
+          <b>Bitte vor der Benutzung zustimmen!</b>
         </div>
         <div class="card-body">
           <!-- <h5 class="card-title">Special title treatment</h5> -->
           <p><i>Ich stimme der Aufzeichnung der Analysedaten (Suchbegriffe, Suchverhalten, Interaktionen auf der Webseite - ohne Personenbezug, siehe unten - Anbieter Appbase Inc., USA) zu und habe die Datenschutzerklärung (siehe unten) gelesen und zur Kenntnis genommen.</i></p>
 
-          <p><i>Ich nehme außerdem zur Kenntnis, dass Vorschaubilder von externen Servern geladen werden und somit meine Browser- und Verbindungsdaten übermittelt werden.</i></p>
+          <p><i>Ich nehme außerdem zur Kenntnis, dass Vorschaubilder von externen Servern geladen werden und somit meine Browser- und Verbindungsdaten ggf. an Dritte übermittelt werden.</i></p>
 
           <p>Die Entscheidung wird mittels eines Session-Cookies für 2h gespeichert.</p>
           <?php if($privacy_notice_accepted === FALSE): ?>
           <div class="text-center">
-          <a href="<?php echo site_url("oerhoernchen/privacy/accept_privacy_notice");?>" class="btn btn-primary">Zustimmen</a>
+          <a href="<?php echo site_url("oerhoernchen/privacy/accept_privacy_notice");?>" class="btn btn-success"><i class="fas fa-check"></i> Zustimmen & Hochschul-Suche aufrufen</a>
           <a href="https://o-e-r.de" class="btn btn-light">Webseite verlassen</a>
           </div>
         <?php else: ?>
