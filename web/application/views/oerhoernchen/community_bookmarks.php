@@ -11,6 +11,6 @@
 
 <div class="row">
 	<div class="mx-auto col-lg-9 col-sm-12">
-		<div class="text-center"><small>Dieser Prototyp wird derzeit mit einem Free-Plan bei appbase.io betrieben, ggf. wird das Zugriffslimit erreicht bei zu vielen Abrufen. Viel Spaß beim Ausprobieren & gerne bei <a href="http://twitter.com/oerhoernchen">Twitter</a> folgen! </small></div>
+		<div class="text-center"><small>Dieser Prototyp wird derzeit mit einem Free-Plan bei appbase.io betrieben, ggf. wird das Zugriffslimit erreicht bei zu vielen Abrufen. Viel Spaß beim Ausprobieren & gerne bei <a href="http://twitter.com/oerhoernchen">Twitter</a> folgen! Für die Richtigkeit der Angaben wird keinerlei  Haftung übernommen, Lizenzhinweise bitte auf der jeweiligen Quellseite nachschauen. Bitte bei der Nachnutzung die <a href="https://open-educational-resources.de/oer_materialien/oer-leichtgemacht-mit-der-tullu-regel/">TULLU-Regel<a> beachten.</small></div>
 	</div>
 </div>

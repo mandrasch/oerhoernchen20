@@ -18,12 +18,12 @@ $general_js_files = array(
 
 
 <!-- START Bootstrap-Cookie-Alert -->
-<div class="alert text-center cookiealert" role="alert">
+<!-- <div class="alert text-center cookiealert" role="alert">
   Es handelt sich um eine private und nicht-öffentliche Prototyp-Version. Für die Sicherheit von personenbezogenen Daten kann keine umfassende Haftung übernommen werden, die Benutzung erfolgt auf eigenes Risiko. Zudem werden externe Dienste wie Appbase.io, Google Fonts, Imgur, etc. eingebunden - eingegebene Daten werden also ggf. an Drittanbieter übermittelt. Mit der Nutzung des Prototypens stimmen Sie einer möglichen Übermittlung zu.
     <button type="button" class="btn-primary btn-sm acceptcookies" aria-label="Close">
         Ich stimme zu
     </button>
-</div>
+</div> -->
 <!-- END Bootstrap-Cookie-Alert -->
 
 <footer>
