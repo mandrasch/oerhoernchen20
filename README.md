@@ -2,7 +2,7 @@ Quick & dirty prototype
 
 IT IS NOT RECOMMEND TO USE IT IN PRODUCTION ENVIRONMENTS, NO WARRANTY
 
-Live demo: https://beta2.oerhoernchen.de/hochschule/?licenseTypeFilter=%5B%22CC0%22%2C%22CC+BY%22%2C%22CC+BY-SA%22%5D
+Live demo: https://beta2.oerhoernchen.de/hochschule/
 
 ## Technical background
 
