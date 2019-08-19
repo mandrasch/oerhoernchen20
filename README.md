@@ -1,6 +1,26 @@
 Quick & dirty prototype
 
+IT IS NOT RECOMMEND TO USE IT IN PRODUCTION/LIVE EXPERIMENTS, NO WARRANTY
+
 Live demo: https://beta2.oerhoernchen.de/hochschule/?licenseTypeFilter=%5B%22CC0%22%2C%22CC+BY%22%2C%22CC+BY-SA%22%5D
+
+## Technical background
+
+How was OER metadata obtained from https://oerbw.de and https://hoou.de?
+
+1. Get sitemap.xml file
+2. Search for url with specific paths, e.g. /render/ (OERBW/ZOERR) /materials/ (HOOU)
+3. Get URL (curl), parse it (Simple DOM)
+4. For OERBW/ZOERR it is wonderful & easy, because metadata is stored as json & in schema.org format in HTML source code :raised_hands: :raised_hands: :raised_hands:
+5. For HOOU we need to parse the HTML source code manually (although they have schema.org metadata, but only about their organisation \[submitted to them as feedback already\]
+6. Push the obtained metadata to appbase.io index (elastic search), handle create/update logic
+7. Enjoy
+
+- Next step, hopefully we'll achieve this soon: Cooperate on OER metadata standard, so we can filter for subjects, technical formats, etc.
+- big dream: every OER portal or project has metadata in HTML source available
+- Example for schema.org metadata in source code: https://www.oerbw.de/edu-sharing/components/render/4aed7529-dd02-44d0-b518-4640a8e8902f
+
+If you're nOERdy, please also check out http://blog.lobid.org/2019/05/17/skohub.html
 
 ## Install web frontend
 
