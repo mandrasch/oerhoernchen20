@@ -6,7 +6,9 @@ Live demo: https://beta2.oerhoernchen.de/hochschule/
 
 ## Technical background
 
-How was OER metadata obtained from https://oerbw.de and https://hoou.de?
+How was OER metadata obtained from https://oerbw.de, https://hoou.de and others?
+
+Mainly this is the same approach that Google and other search engines use: Discovering URLs by sitemap.xml file and crawl the pages (Google offers the https://search.google.com/search-console/about?hl=de to reindex pages and check if all pages were crawled correctly, I think thats smart for OER in the OpenWeb too)
 
 1. Get sitemap.xml file
 2. Search for url with specific paths, e.g. /render/ (OERBW/ZOERR) /materials/ (HOOU)
@@ -21,6 +23,8 @@ How was OER metadata obtained from https://oerbw.de and https://hoou.de?
 - Example for schema.org metadata in source code: https://www.oerbw.de/edu-sharing/components/render/4aed7529-dd02-44d0-b518-4640a8e8902f
 
 If you're nOERdy, please also check out http://blog.lobid.org/2019/05/17/skohub.html
+
+Also inspired by https://blog.hartleybrody.com/web-scraping/ <3
 
 ## Install web frontend
 
