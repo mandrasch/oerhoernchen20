@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// cd /Users/admin/webserver/2019-oerhoernchen20/web/
+// 1. FLUSH
+// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
+// 2. TRY Crawling (crawltest will be used)
+// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
+// 3. Publish to official Index, append 1 as parameter:
+//  /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr 1
+
 // FLUSH:
 // Matthiass-Air:web admin$ /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
 
@@ -108,21 +116,30 @@ class Cli extends CI_Controller {
 			custom_log_message("PUBLISH TO ".$appbaseIndex);
 
 			switch($projectkey){
-				case 'zoerr':
+				case 'zoerr': // schema.org/LRMI/JSON/LD for the win :-))
 					$sitemapUrl="https://www.oerbw.de/edu-sharing/eduservlet/sitemap?from=0";
 					$urlStrPosValue="/render/";
+					$projectHasMachineReadableLicense = true; // either LDJSON/schema.org or RDFa (rel=license)
 					break;
-				case 'hoou':
+				case 'hoou': // nothing
 					$sitemapUrl="https://www.hoou.de/sitemap.xml";
 					$urlStrPosValue="hoou.de/materials/";
+					$projectHasMachineReadableLicense = false;
 					break;
-				case 'digill':
+				case 'digill': // rdfa for the win
 					$sitemapUrl="https://digill-nrw.de/kurs-sitemap.xml";
 					$urlStrPosValue="kurs/";
+					$projectHasMachineReadableLicense = true;
 					break;
-				case 'oncampus':
+				case 'oncampus': // rdfa for the win
 						$sitemapUrl="https://www.oncampus.de/sitemap.xml";
 						$urlStrPosValue="";
+						$projectHasMachineReadableLicense = true;
+						break;
+				case 'tibav': // nothing :/
+						$sitemapUrl="https://av.tib.eu/sitemap.xml";
+						$urlStrPosValue="/media/";
+						$projectHasMachineReadableLicense = false;
 						break;
 				default:
 					show_error("No project key provided");
@@ -143,13 +160,17 @@ class Cli extends CI_Controller {
 				}
 			}
 
-			custom_log_message("Found ".count($urls)." URLS with /materials/");
+			custom_log_message("Found ".count($urls)." URLS with ".$urlStrPosValue);
 
 
 			// 2DO: curl all urls
 
 			foreach($urls as $url){
 				custom_log_message("Curling url: ".$url);
+
+				custom_log_message("Sleep 5 seconds to be gentle to the server while curling... ;-)");
+				// 2DO: use robots.txt throttle limit
+				sleep(5);
 
 				$ch = curl_init();
 				$timeout = 5;
@@ -162,11 +183,10 @@ class Cli extends CI_Controller {
 				$responseHtml = curl_exec($ch);
 				// close handle to release resources
 				curl_close($ch);
-				custom_log_message("Sleep 2 seconds to be gentle to the server ... ;-)");
-				sleep(2);
+
 				// 2DO: catch curl errors and show it (see ajax_add_entry in community_bookmarks)
 
-				switch($projectkey){
+				/*switch($projectkey){
 					case 'hoou':
 						$analyzeResult = $this->htmlanalyzer->analyze_html_hoou($responseHtml);
 						break;
@@ -176,25 +196,35 @@ class Cli extends CI_Controller {
 						default:
 						$analyzeResult = $this->htmlanalyzer->analyze_html($responseHtml);
 						break;
-					}
+					}*/
+
+				$analyzeResult = $this->htmlanalyzer->analyze_html($responseHtml,$projectHasMachineReadableLicense);
+
+
 
 				if($analyzeResult===FALSE){
 					continue; // no open license found, we skip
 				}
-			
+
 	      //var_dump($this->htmlanalyzer->get_metadata());
 				$sanitizedObjectData = $this->htmlanalyzer->get_metadata();
 				$sanitizedObjectData->main_url = $url;
 				// 2DO: Introduce field to buy just one appbase index?
 				$sanitizedObjectData->oerhoernchen_index = "highereducation";
+				// default value for prototype
+				$sanitizedObjectData->educational_sectors = array("highereducation");
+				//array_push(	$sanitizedObjectData->educational_sectors, "highereducation");
 				$sanitizedObjectData->projectkey = filter_var($projectkey, FILTER_SANITIZE_STRING);
 				custom_log_message("Sanitized object data: ".print_r($sanitizedObjectData,true));
 				custom_log_message("Publish it to index ...");
 				$resultElasticId = $this->appbase->publish_to_index_and_log_in_database($appbaseIndex, $sanitizedObjectData);
 				custom_log_message("Elastic success id: ".$resultElasticId);
-			}
 
 
+
+			} // eo foreach
+
+			custom_log_message("Done :)");
 			// 2DO: parse data with HtmlAnalyzer
 
 			// done. :)
