@@ -27,3 +27,9 @@ $config['appbase_auth_string_read_highereducation'] = "";
 $config['appbase_auth_string_write_highereducation'] = "";
 $config['appbase_app_name_highereducation'] = '';
 $config['appbase_api_url_highereducation'] = 'https://scalr.api.appbase.io';
+
+// highereducation - special index to retrieve hoou, zoerr, etc. --> for TESTING OF CRAWLS
+$config['appbase_auth_string_read_highereducation-crawltest'] = "";
+$config['appbase_auth_string_write_highereducation-crawltest'] = "";
+$config['appbase_app_name_highereducation-crawltest'] = '';
+$config['appbase_api_url_highereducation-crawltest'] = 'https://scalr.api.appbase.io';
