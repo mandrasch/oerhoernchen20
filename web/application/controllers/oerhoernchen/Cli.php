@@ -1,45 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// FLUSH:
+// Matthiass-Air:web admin$ /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
+
+// BETTER CALL THIS FROM CLI
+// cd /Users/admin/webserver/2019-oerhoernchen20/web/
+// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl hoou
+// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
+// FOR PRODUCTION INDEX USE crawl zoerr 1 (isTest = )
+
+
 require_once APPPATH . 'third_party/simple_dom_parser/simple_dom_parser.php';
 
 class Cli extends CI_Controller {
 
 	public function __construct() {
+
 		parent::__construct();
 
-		$logged_in = $this->ion_auth->logged_in();
-
-		// protect controller
-		if (!$logged_in)
-		{
-			 redirect('auth/login');
+		if(!is_cli()){
+			show_error("Should only be access from CLI");
 		}
-
-		if ($logged_in) {
-			$this->user_id = $this->ion_auth->user()->row()->id;
-		} else {
-			$this->user_id = null;
-		}
-		log_message('debug', 'USERID: ' . $this->user_id);
-
-		// add data to views
-		$data['logged_in'] = $logged_in;
-		$this->load->vars($data);
-
-		/* pro login */
-		/*$this->load->model("user_model");
-		if (!$this->user->loggedin) {
-			redirect(site_url("login"));
-		}*/
-
-    // 2DO: put this in helper!
-		// ID = 2 -> editorialstaff
-		/*if (!$this->user_model->check_user_in_group($this->user->info->ID, 2)) {
-			// 2DO: is show_error the best solution?
-			show_error("You are not in the User Group Friends so you cannot view this page!");
-		}*/
-
 	}
 
     // usage MAMP php --> ...
@@ -104,11 +86,26 @@ class Cli extends CI_Controller {
 			return $this->htmlanalyzer->get_metadata();
     }
 
-		// BETTER CALL THIS FROM CLI
-		// cd /Users/admin/webserver/2019-oerhoernchen20/web/
-		// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl hoou
-		// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
-		public function crawl($projectkey){
+		public function flush_crawltest(){
+			$this->load->library('oerhoernchen/appbase');
+			custom_log_message("Flush the crawltest-index");
+			$this->appbase->flush_index("highereducation-crawltest");
+		}
+
+
+		public function crawl($projectkey,$publishToProduction = false){
+
+			$this->load->library('oerhoernchen/appbase');
+			$this->load->library('oerhoernchen/htmlanalyzer');
+
+			if(!$publishToProduction){
+				// 2DO: flush the whole index via API
+				$appbaseIndex = "highereducation-crawltest";
+			}else{
+				$appbaseIndex = "highereducation";
+			}
+
+			custom_log_message("PUBLISH TO ".$appbaseIndex);
 
 			switch($projectkey){
 				case 'zoerr':
@@ -119,13 +116,19 @@ class Cli extends CI_Controller {
 					$sitemapUrl="https://www.hoou.de/sitemap.xml";
 					$urlStrPosValue="hoou.de/materials/";
 					break;
+				case 'digill':
+					$sitemapUrl="https://digill-nrw.de/kurs-sitemap.xml";
+					$urlStrPosValue="kurs/";
+					break;
+				case 'oncampus':
+						$sitemapUrl="https://www.oncampus.de/sitemap.xml";
+						$urlStrPosValue="";
+						break;
 				default:
 					show_error("No project key provided");
 					break;
 			}
 
-			$this->load->library('oerhoernchen/htmlanalyzer');
-			$this->load->library('oerhoernchen/appbase');
 
 			custom_log_message("Start crawling");
 			// 2DO: Get sitemap file via cURL
@@ -135,7 +138,7 @@ class Cli extends CI_Controller {
 			// get all links containing "materials/"
 			$urls = [];
 			foreach($sitemapObject as $entry){
-				if(strpos($entry->loc,$urlStrPosValue) !== FALSE){
+				if($urlStrPosValue == "" || strpos($entry->loc,$urlStrPosValue) !== FALSE){
 					$urls[] = (string) $entry->loc;
 				}
 			}
@@ -165,13 +168,20 @@ class Cli extends CI_Controller {
 
 				switch($projectkey){
 					case 'hoou':
-						$this->htmlanalyzer->analyze_html_hoou($responseHtml);
+						$analyzeResult = $this->htmlanalyzer->analyze_html_hoou($responseHtml);
 						break;
 						case 'zoerr':
-						$this->htmlanalyzer->analyze_html($responseHtml);
+						$analyzeResult = $this->htmlanalyzer->analyze_html($responseHtml);
+						break;
+						default:
+						$analyzeResult = $this->htmlanalyzer->analyze_html($responseHtml);
 						break;
 					}
 
+				if($analyzeResult===FALSE){
+					continue; // no open license found, we skip
+				}
+			
 	      //var_dump($this->htmlanalyzer->get_metadata());
 				$sanitizedObjectData = $this->htmlanalyzer->get_metadata();
 				$sanitizedObjectData->main_url = $url;
@@ -180,7 +190,7 @@ class Cli extends CI_Controller {
 				$sanitizedObjectData->projectkey = filter_var($projectkey, FILTER_SANITIZE_STRING);
 				custom_log_message("Sanitized object data: ".print_r($sanitizedObjectData,true));
 				custom_log_message("Publish it to index ...");
-				$resultElasticId = $this->appbase->publish_to_index_and_log_in_database("highereducation", $sanitizedObjectData);
+				$resultElasticId = $this->appbase->publish_to_index_and_log_in_database($appbaseIndex, $sanitizedObjectData);
 				custom_log_message("Elastic success id: ".$resultElasticId);
 			}
 

@@ -44,6 +44,8 @@
                                                 <option value="github">Öffentliche Github-Demo</option>
                                             <?php endif;?>
                                             <option value="official">Öffentlicher Index (> erfordert Freischaltung)</option>
+                                              <option value="highereducation">Öffentlicher Index Hochschule</option>
+                                              <option value="highereducation-crawltest"> Index Hochschule (Crawltest)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -504,4 +506,3 @@ data-image-shrink="400x400" />
 
 </div><!-- eo row -->
 </div><!-- eo container -->
-

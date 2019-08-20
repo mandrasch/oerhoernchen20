@@ -25,9 +25,70 @@ class Appbase {
 		// 2DO: error handling
 	}
 
+	// 2DO: Be careful ;-)
+	public function flush_index($index){
+		log_message('debug', "Flush index: ".$index);
+		$curl = curl_init();
+
+		$this->CI->config->load('appbase');
+
+		// for security reasons we just flush crawltest by now
+		switch ($index) {
+		case 'highereducation-crawltest':
+			$appbase_auth_string = $this->CI->config->item('appbase_auth_string_write_' . $index);
+			$appbase_api_url = $this->CI->config->item('appbase_api_url_official') . '/' . $this->CI->config->item('appbase_app_name_' . $index) ;
+			break;
+		default:
+			show_error('Unexpected index value', 500);
+			break;
+		}
+
+		$request_params = array(
+			'query'=> array(
+				'match_all'=> (object)[]
+				)
+		);
+		$query_fields = json_encode($request_params);
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $appbase_api_url. '/_delete_by_query',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => $query_fields,
+			CURLOPT_HTTPHEADER => array(
+				"Authorization: Basic " . base64_encode($appbase_auth_string) . "",
+				"Content-Type: application/json",
+			),
+		));
+
+		$responseAppbaseRaw = curl_exec($curl);
+		$responseAppbaseDecoded = json_decode($responseAppbaseRaw);
+		custom_log_message('CURL response: '.print_r($responseAppbaseDecoded,true));
+		$err = curl_error($curl);
+		curl_close($curl);
+
+		if ($err) {
+			//echo "cURL Error #:" . $err;
+
+			log_message('error', 'CURL ERROR' . print_r($responseAppbaseRaw, true));
+			return false;
+
+			/*return $this->output->
+				set_content_type('application/json')->
+				set_status_header(200)
+				->set_output($responseAppbaseRaw);*/
+			// 2DO: return response.success = false and log error internally!
+
+		}
+
+	} // eo flush_index
+
 	public function publish_to_index_and_log_in_database($index, $sanitized_object_data, $user_id=null, $imgur_url=null, $imgur_delete_hash=null, $time=null) {
 
-		log_message('debug', "Publish to index start");
+		log_message('debug', "Publish to index ".$index." start");
 
 		$curl = curl_init();
 
@@ -45,6 +106,7 @@ class Appbase {
 		case 'github':
 		case 'playground':
 		case 'highereducation':
+		case 'highereducation-crawltest':
 			$appbase_auth_string = $this->CI->config->item('appbase_auth_string_write_' . $index);
 			$appbase_api_url = $this->CI->config->item('appbase_api_url_official') . '/' . $this->CI->config->item('appbase_app_name_' . $index) ;
 			break;
@@ -61,6 +123,10 @@ class Appbase {
 		log_message('debug', 'Try to publish to index ' . $index);
 		log_message('debug', 'URL: ' . $appbase_api_url);
 		log_message('debug', 'Appbase auth string has length: ' . strlen($appbase_auth_string));
+
+		if(strlen($appbase_auth_string) == 0){
+			show_error('Auth string has zero characters, that won\'t work ;-)');
+		}
 
 		// check if url is already in index, so we can updated
 		// import use .keyword, url is analyzed by elastic
@@ -90,7 +156,7 @@ class Appbase {
 			),
 		));
 		$responseAppbaseRaw = curl_exec($curl);
-		print_r($responseAppbaseRaw);
+		custom_log_message("Result CURL: ".print_r($responseAppbaseRaw,true));
 
 		// 2DO: check for errors
 		// 2DO: analyze "hits":{"total":{"value":23,
@@ -99,8 +165,10 @@ class Appbase {
 		// 2DO: there should be only one item with main_url=main_url, but maybe something went wrong ;-)
 
 		$responseObjectQueryForMainUrl = json_decode($responseAppbaseRaw);
-		custom_log_message("Query result to check if url is already in index ".$responseObjectQueryForMainUrl->hits->total->value );
-		if($responseObjectQueryForMainUrl->hits->total->value > 0){
+		custom_log_message("Query result to check if url is already in index - value: ".@$responseObjectQueryForMainUrl->hits->total->value );
+		custom_log_message("Curl response ".print_r($responseObjectQueryForMainUrl,true));
+		// status 400 - new index, _search not possible
+		if(!isset($responseObjectQueryForMainUrl->status) && $responseObjectQueryForMainUrl->hits->total->value > 0){
 			custom_log_message("We update the document with id ".$responseObjectQueryForMainUrl->hits->hits[0]->_id);
 
 			// update did not work as excepted

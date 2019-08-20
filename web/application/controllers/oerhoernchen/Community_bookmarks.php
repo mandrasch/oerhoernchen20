@@ -167,9 +167,10 @@ class Community_bookmarks extends CI_Controller {
 			// index to post to, should be official or playground
 			// 2DO: validate values properly
 			$index = $this->input->post('index');
-			if ($index !== 'playground' && $index !== 'official' && $index !== 'github') {
+			// 2DO: is valiated in appbase library - generalize it!
+			/*if ($index !== 'playground' && $index !== 'official' && $index !== 'github' && ) {
 				show_error('Unexpected value for index', 500);
-			}
+			}*/
 
 			// retrieve it with codeigniter, should be sanitized?
 			// 2DO: Explore this

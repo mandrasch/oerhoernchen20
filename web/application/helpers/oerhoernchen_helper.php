@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 function custom_log_message($message, $type="debug")
 {
     // for quick testing
-    echo "{$message} <br>".PHP_EOL;
-    return;
+    //echo "{$message} <br>".PHP_EOL;
+    //return;
     // 2DO: remove later
 
     if (is_cli()) {

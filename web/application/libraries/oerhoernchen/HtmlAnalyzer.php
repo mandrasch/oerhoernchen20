@@ -38,7 +38,7 @@ class HtmlAnalyzer
     }
 
     // standard method for retrieving schema.org metadata / LRMI
-    public function analyze_html($htmlContent)
+    public function analyze_html($htmlContent,$skipIfNoOpenLicenseFound = true)
     {
         // 2DO: Copied from Community Bookmarks Controller
         // 2DO: USE IT THERE TOO, GENERALIZE IT!
@@ -59,10 +59,8 @@ class HtmlAnalyzer
 					if (is_object($md)
 						&& is_int(strpos($md->{'@context'}, "schema.org"))
 						&& isset($md->license)) {
-
 						log_message('debug', 'Set data license to ' . $md->license);
 						$data['license_url'] = $md->license;
-
 					} // eo match license typ
 
 					if (isset($md->name)) {
@@ -117,17 +115,10 @@ class HtmlAnalyzer
 
 					$data["schema_org_metadata_json"] = json_encode($md);
 
-
-
-
 					// 2DO: Map learning resource types?
-
 					// get author
-
 					// get free keywords?
-
 					// preview image!!
-
 				} // EO LRMI
 
 				// SECOND - optional / RDFa check
@@ -206,9 +197,23 @@ class HtmlAnalyzer
 					// 2DO: public domain mark?
 				} // eo if
 
+        // final check, if there is no license here we skip
 
+        if($skipIfNoOpenLicenseFound && !isset($data["license_type"])){
+            custom_log_message("No open license found, we skip this URL ...");
+            return false;
+        }
+
+        // we don't do it right now, only cc by licensed content is acceptable
+        //if(!$skipIfNoOpenLicenseFound && !isset($data["license_type"])){
+          // set license_type to other of its no cc license and we want to index interface
+          // 2DO: that would be the place for license overrides?
+          // $data["license_type"] = "other";
+        //}
+
+    
+        // set metadata
         $this->md = $data;
-
         return true;
 
     }

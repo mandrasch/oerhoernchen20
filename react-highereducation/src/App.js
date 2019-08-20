@@ -211,6 +211,9 @@ class App extends Component {
                 },{
                     "label":"HOOU-Portal",
                     "value":"hoou"
+                },{
+                  "label":"oncampus",
+                  "value":"oncampus"
                 }]}
                 showSearch = {
                     false

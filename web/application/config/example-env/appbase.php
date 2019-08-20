@@ -21,3 +21,9 @@ $config['appbase_auth_string_write_github'] = "";
 $config['appbase_app_name_github'] = '';
 $config['appbase_api_url_github'] = 'https://scalr.api.appbase.io';
 // https://scalr.api.appbase.io/oerhoernchen20-github/bookmark/
+
+// highereducation - special index to retrieve hoou, zoerr, etc.
+$config['appbase_auth_string_read_highereducation'] = "";
+$config['appbase_auth_string_write_highereducation'] = "";
+$config['appbase_app_name_highereducation'] = '';
+$config['appbase_api_url_highereducation'] = 'https://scalr.api.appbase.io';
