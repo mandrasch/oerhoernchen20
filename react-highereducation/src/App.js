@@ -218,6 +218,9 @@ class App extends Component {
               {
                 "label":"TIB AV Portal",
                 "value":"tibav"
+              },{
+                "label":"HHU Mediathek",
+                "value":"hhu"
               }]}
                 showSearch = {
                     false

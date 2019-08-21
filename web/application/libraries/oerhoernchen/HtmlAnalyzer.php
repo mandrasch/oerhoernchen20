@@ -38,7 +38,7 @@ class HtmlAnalyzer
     }
 
     // standard method for retrieving schema.org metadata / LRMI
-    public function analyze_html($htmlContent, $projectHasMachineReadableLicense)
+    public function analyze_html($htmlContent, $projectHasMachineReadableLicense, $projectKey)
     {
         // 2DO: Copied from Community Bookmarks Controller
         // 2DO: USE IT THERE TOO, GENERALIZE IT!
@@ -208,6 +208,11 @@ class HtmlAnalyzer
           }
         }
 
+        // custom overwrite for hhu needed, we have to take og:description and og:title
+        if($projectKey == 'hhu'){
+          $data['description'] = @$html->find('meta[property*="og:description"]', 0)->content;
+          $data['title'] = @$html->find('meta[property*="og:title"]', 0)->content;
+        }
 
 
 

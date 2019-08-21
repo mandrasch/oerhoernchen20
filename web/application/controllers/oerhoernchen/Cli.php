@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // cd /Users/admin/webserver/2019-oerhoernchen20/web/
 // 1. FLUSH
 // /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
-// 2. TRY Crawling (crawltest will be used)
+// 2. TRY Crawling (index _crawltest will be used)
 // /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
-// 3. Publish to official Index, append 1 as parameter:
+// 3. Publish to official Index, append 1 as parameter (publish to production):
 //  /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr 1
 
 // FLUSH:
@@ -141,6 +141,16 @@ class Cli extends CI_Controller {
 						$urlStrPosValue="/media/";
 						$projectHasMachineReadableLicense = false;
 						break;
+				case 'hhu': // strange approach, title&desc are always the same (hhu)
+						$sitemapUrl="https://mediathek.hhu.de/sitemap";
+						$urlStrPosValue="/watch/";
+						$projectHasMachineReadableLicense = true;
+						break;
+				case 'oercontentbuffet':
+					$sitemapUrl="https://oer-contentbuffet.info/edu-sharing/eduservlet/sitemap?from=0";
+					$urlStrPosValue="/render/";
+					$projectHasMachineReadableLicense = true;
+					break;
 				default:
 					show_error("No project key provided");
 					break;
@@ -208,7 +218,7 @@ class Cli extends CI_Controller {
 						break;
 					}*/
 
-				$analyzeResult = $this->htmlanalyzer->analyze_html($responseHtml,$projectHasMachineReadableLicense);
+				$analyzeResult = $this->htmlanalyzer->analyze_html($responseHtml,$projectHasMachineReadableLicense,$projectkey);
 
 
 
