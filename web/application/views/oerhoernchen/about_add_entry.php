@@ -71,6 +71,10 @@
                 <h2>Bundesland/Land fehlt?</h2>
 
               <p>Bundesland fehlt? >> info ((at)) matthias-andrasch.de oder <a href="https://twitter.com/m_andrasch">Twitter-DM</a></p>
+
+              <h2>Über den deutschsprachigen Tellerrand hinaus:</h2>
+
+              <p>Englischssprachige OER-Suche (USA): <a href="https://oasis.geneseo.edu/">OASIS</a> (SUNY Geneseo's Milne Library, New York)</p>
 			    </div>
 		</div>
 	</div>
