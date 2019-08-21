@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
 
-          <p style="color:red;">Derzeit deaktiviert - das Eintragen kann aus Haftungsgründen nicht öffentlich freigeschaltet werden derzeit, es handelt sich hier nur um einen Prototypen. Siehe Infos <a href="<?php echo site_url("/infos-hinzufuegen");?>">hier</a>.</p>
+          <p style="color:red;">Derzeit deaktiviert - das Eintragen kann aus Haftungsgründen nicht öffentlich freigeschaltet werden derzeit, es handelt sich hier nur um einen Prototypen. Siehe Infos <a href="<?php echo site_url("/infos-hinzufuegen");?>">hier</a>, was in Ihrem Bundesland schon möglich ist bzw. wo generell veröffentlicht/indexiert werden kann. :-) </p>
 
 <div class="mx-auto col-lg-9 col-sm-12">
                     <!-- form user info -->

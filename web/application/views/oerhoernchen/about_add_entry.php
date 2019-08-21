@@ -22,7 +22,7 @@
 
             <h2 id="fueralle">Für alle Wissenschaftler*innen</h2>
 
-              <p>Generell haben Sie, unabhängig vom Bundesland und ob Sie derzeit im Anstellungsverhältnis an einer Hochschule sind, folgende Optionen: Für Dokumente und Präsentationen bietet sich <a href="https://zenodo.org">Zenodo</a> an, für wissenschaftliche Videos das <a href="https://av.tib.eu/">TIB AV Portal</a>, interaktive h5p-Inhalte können erstmal auf der Demo-Instanz <a href="https://h5p.org/">h5p.org</a> veröffentlicht werden und statische Webseiten können auf <a href="https://gitlab.com">Gitlab.com</a> (GitLab Pages) gehostet werden.</p>
+              <p>Generell haben Sie, unabhängig vom Bundesland und ob Sie derzeit im Anstellungsverhältnis an einer Hochschule sind, folgende Optionen: Für Dokumente und Präsentationen bietet sich <a href="https://zenodo.org">Zenodo</a> an, für wissenschaftliche Videos das <a href="https://av.tib.eu/">TIB AV Portal</a>, interaktive h5p-Inhalte können erstmal auf der Demo-Instanz <a href="https://h5p.org/">h5p.org</a> veröffentlicht werden und statische Webseiten können auf <a href="https://gitlab.com">Gitlab.com</a> (GitLab Pages) gehostet werden. Falls Sie am Thema MOOC-Erstellung interessiert sind, bietet oncampus ein offenes Angebot <a href="https://www.oncampus.de/weiterbildung/moocs/mooin-maker">(MOOC Maker)</a> an.</p>
 
 
             <h2 id="bawue" style="color:darkgreen;">Baden Württemberg</h2>
