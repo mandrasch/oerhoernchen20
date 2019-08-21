@@ -27,7 +27,7 @@
 
             <h2 id="bawue" style="color:darkgreen;">Baden Württemberg</h2>
 </
-            <p>Dank des Teams an der Uni Tübingen (Peter Rempis, Michael Menzel und weitere hochengagierte Mitarbeiter*innen) sind Sie als Hochschulmitarbeiter*in in der glücklichen Lage, als derzeit einziges Bundesland ihre OER-Inhalte bereits hochladen und indexieren zu können mittels einer Web-Oberfläche.<br>Melden Sie sich in der <a href="https://www.oerbw.de/edu-sharing/components/search?mainnav=true">ZOERR-Weboberfläche</a> einfach mit Ihrem Uni-Login an:</p>
+            <p>Dank des Teams an der Uni Tübingen (Peter Rempis, Michael Menzel und weitere hochengagierte Mitarbeiter*innen) sowie des <a href="https://mwk.baden-wuerttemberg.de/de/startseite/">MWK BaWü</a> sind Sie als Hochschulmitarbeiter*in in der glücklichen Lage, als derzeit einziges Bundesland ihre OER-Inhalte bereits hochladen und indexieren zu können mittels einer Web-Oberfläche.<br>Melden Sie sich in der <a href="https://www.oerbw.de/edu-sharing/components/search?mainnav=true">ZOERR-Weboberfläche</a> einfach mit Ihrem Uni-Login an:</p>
 
             <img src="<?php echo base_url();?>/assets/img/zoerr_login.png" style="max-width:100%;"/>
 
