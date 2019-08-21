@@ -50,7 +50,7 @@
                 <p>In Rheinland-Pfalz arbeiten engagierte Menschen bereits seit längerer Zeit am offenen intausch von Lehrmaterial, siehe z.B. <a href="https://www.oer-at-rlp.de">OER@RLP</a>. Eine Veröffentlichungsmöglichkeit ist derzeit in der Beta-Phase, bei Fragen kann man sich vertrauensvoll ans <a href="https://www.vcrp.de/">VCRP</a> wenden.
 
             <h2 id="nrw">(zukünftig) NRW</h2>
-              <p>In NRW laufen derzeit Vorprojekte, ein Portal als auch dezentrale Lösungen für die bestehende Hochschulinfrastruktur (LMS,Repositorien) sind im Gespräch: <a href="http://heureka.blogs.ruhr-uni-bochum.de">Projektblog und Infos</a>.</p>
+              <p>In NRW laufen derzeit Vorprojekte, ein Portal als auch dezentrale Lösungen für die bestehende Hochschulinfrastruktur (LMS,Repositorien) sind im Gespräch: <a href="http://heureka.blogs.ruhr-uni-bochum.de">Projektblog und Infos</a> (Danke an dieser Stelle an <a href="https://www.mkw.nrw/">MKW NRW</a> + alle aktiven Akteure im <a href="https://www.dh-nrw.de/">DH-NRW-Netzwerk</a>)</p>
 
               <p>Eine Liste von bereits aktiven OER-Projekten in NRW findet sich <a href="https://heureka.blogs.ruhr-uni-bochum.de/workshop-oernrw-oer-projekte-an-hochschulen-in-nrw-09-07-2019/">hier</a></p>
 
