@@ -24,8 +24,9 @@ if($logged_in){
 }else{
 	$pages = array(
 		'Suche'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
-		'Hinzufügen (Infos)' =>  site_url('infos-hinzufuegen/'),
-		'Hinzufügen (Demo)' =>  site_url('lesezeichen/hinzufuegen'),
+		'Suche (UNESCO-OER)'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0 (UNESCO-OER)","CC BY (UNESCO-OER)","CC BY-SA (UNESCO-OER)"]'),
+		'+ (Infos)' =>  site_url('infos-hinzufuegen/'),
+		'+ (Demo)' =>  site_url('lesezeichen/hinzufuegen'),
 
 		//'Klimakrise'=>'',
 	);
