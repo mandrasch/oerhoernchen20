@@ -118,13 +118,13 @@
         "value": "furthereducation"
     }],
     "license_types": [{
-        "label": "CC0",
+        "label": "CC0 (UNESCO-OER)",
         "value": "cc0"
     }, {
-        "label": "CC BY",
+        "label": "CC BY (UNESCO-OER)",
         "value": "ccby"
     }, {
-        "label": "CC BY-SA",
+        "label": "CC BY-SA (UNESCO-OER)",
         "value": "ccbysa"
     }, {
         "label": "CC BY-SA-NC",
