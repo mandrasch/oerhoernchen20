@@ -4,6 +4,8 @@
     <div class="container">
         <div class="row">
 
+          <p style="color:red;">Derzeit deaktiviert - das Eintragen kann aus Haftungsgründen nicht öffentlich freigeschaltet werden derzeit, es handelt sich hier nur um einen Prototypen. Siehe Infos <a href="<?php echo site_url("/infos-hinzufuegen");?>">hier</a>.</p>
+
 <div class="mx-auto col-lg-9 col-sm-12">
                     <!-- form user info -->
 
@@ -30,7 +32,7 @@
 
                     <div class="card" id="card-form">
                         <div class="card-header">
-                            <h4 class="mb-0">Lesezeichen hinzufügen</h4>
+                            <h4 class="mb-0">URL zum Index hinzufügen</h4>
                         </div>
                         <div class="card-body">
                             <form id="oerhoernchen20-add-form" class="form-horizontal" role="form">
@@ -85,7 +87,10 @@
                                         <input type="hidden" name="imgur_url" />
                                         <input type="hidden" name="imgur_delete_hash" />
 
-                                        <div class="card">
+                                        <button disabled>Hochladen</button>
+
+                                        <!-- disabled by now -->
+                                        <!-- <div class="card">
                                         <div class="card-header">
                                             <span class="collapsed d-block" data-toggle="collapse" href="#collapse-collapsed" aria-expanded="true" style="cursor:pointer;" aria-controls="collapse-collapsed" id="heading-collapsed">
                                                 <i class="fa fa-chevron-down float-right"></i>
@@ -104,7 +109,7 @@
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
                                     </div>
@@ -217,7 +222,7 @@ data-image-shrink="400x400" />
 
 
 
-                                <div class="form-group row">
+                                <div class="form-group row" style="display:none;">
 
                                     <label class="col-lg-3 col-form-label form-control-label custom-no-padding-top"><b>Bildungsbereich *</b></label>
                                     <div class="col-lg-9">
@@ -253,7 +258,7 @@ data-image-shrink="400x400" />
                                 </div>
 
 
-                                <div class="form-group row">
+                                <div class="form-group row" style="display:none;">
                                     <label class="col-lg-3 col-form-label form-control-label custom-no-padding-top">Schule: Fach?</label>
                                     <div class="col-lg-9">
                                           <?php foreach ($school_subjects as $item): ?>
@@ -315,7 +320,8 @@ data-image-shrink="400x400" />
 
                                 <div class="form-group row">
                                     <div class="col-12 text-center">
-                                      <button class="btn btn-success btn-lg" id="submit-entry"><i class="fas fa-check"></i> Lezeichen eintragen</button>
+                                      <p style="color:red;">Derzeit deaktiviert - das Eintragen kann aus Haftungsgründen nicht öffentlich freigeschaltet werden derzeit, es handelt sich hier nur um einen Prototypen. Siehe Infos <a href="<?php echo site_url("/infos-hinzufuegen");?>">hier</a>.</p>
+                                      <button class="btn btn-success btn-lg" id="submit-entry" disabled><i class="fas fa-check"></i> Lezeichen eintragen</button>
                                       <br /><small><a href="" id="reset-form" class="reset-form text-mutedana">Zurücksetzen</a></small>
                                   </div>
                                 </div>

@@ -19,12 +19,6 @@ class Community_bookmarks extends CI_Controller {
 
 		$logged_in = $this->ion_auth->logged_in();
 
-		// protect controller
-		if (!$logged_in)
-		{
-			 redirect('auth/login');
-		}
-
 		if ($logged_in) {
 			$this->user_id = $this->ion_auth->user()->row()->id;
 		} else {
@@ -33,8 +27,10 @@ class Community_bookmarks extends CI_Controller {
 		log_message('debug', 'USERID: ' . $this->user_id);
 
 		// add data to views
+		$this->logged_in = $logged_in;
 		$data['logged_in'] = $logged_in;
 		$this->load->vars($data);
+
 
 		/* pro login */
 		/*$this->load->model("user_model");
@@ -104,6 +100,13 @@ class Community_bookmarks extends CI_Controller {
 
 	// show the official index
 	public function index() {
+
+		// protect controller
+		if (!$logged_in)
+		{
+			 redirect('auth/login');
+		}
+
 		$this->config->load('appbase');
 		$jsCssData['appbase_auth_string_read'] = $this->config->item('appbase_auth_string_read_official');
 		$jsCssData['appbase_app_name'] = $this->config->item('appbase_app_name_official');
@@ -117,6 +120,13 @@ class Community_bookmarks extends CI_Controller {
 	}
 
 	public function playground() {
+
+		// protect controller
+		if (!$logged_in)
+		{
+			 redirect('auth/login');
+		}
+
 		$this->config->load('appbase');
 		$jsCssData['appbase_auth_string_read'] = $this->config->item('appbase_auth_string_read_playground');
 		$jsCssData['appbase_app_name'] = $this->config->item('appbase_app_name_playground');
@@ -161,6 +171,13 @@ class Community_bookmarks extends CI_Controller {
 	*/
 
 	public function ajax_add_entry() {
+
+		// protect controller
+		if (!$logged_in)
+		{
+				show_error("Derzeit deaktiviert.");
+			 redirect('auth/login');
+		}
 
 		if (isset($_POST["oerModuleJson"]) && !empty($_POST["oerModuleJson"])) {
 
@@ -372,6 +389,13 @@ class Community_bookmarks extends CI_Controller {
 	// 2DO: Delete image if user removes it via JS
 	public function ajax_add_imgur_upload() {
 
+		// protect controller
+		if (!$logged_in)
+		{
+			show_error("Derzeit deaktiviert.",500);
+			 redirect('auth/login');
+		}
+
 		if (isset($_POST['imgur_url']) && isset($_POST['imgur_delete_hash'])) {
 
 			if ($this->ion_auth->logged_in()) {
@@ -398,6 +422,14 @@ class Community_bookmarks extends CI_Controller {
 
 	// imgur deletion is handled in client, this is just the method afterwards
 	public function ajax_delete_imgur_upload_from_db() {
+
+		// protect controller
+		if (!$logged_in)
+		{
+				show_error("Derzeit deaktiviert.");
+			 redirect('auth/login');
+		}
+
 		$this->db->delete('oerh_log_imgur_uploads', array('imgur_delete_hash' => filter_var($_POST['imgur_delete_hash'], FILTER_SANITIZE_STRING)));
 		// 2DO: send response json if success
 	}
@@ -407,6 +439,14 @@ class Community_bookmarks extends CI_Controller {
 		// test in browser: http://____/entry/ajax_url_check?main_url=https%3A%2F%2Fwww.oerbw.de%2Fedu-sharing%2Fcomponents%2Frender%2F8acf78da-eb7e-467d-bbac-e6cf7c687022
 
 		if (isset($_GET["main_url"])) {
+
+
+			//
+			//
+			// 2DO: USE HTML_ANALYZER->ANALYZE HTML!
+			//
+			//
+
 
 			$url = ($_GET["main_url"]);
 			$url = filter_var($url, FILTER_SANITIZE_URL);
@@ -740,6 +780,12 @@ class Community_bookmarks extends CI_Controller {
 
 	public function convert() {
 
+		// protect controller
+		if (!$logged_in)
+		{
+				show_error("Derzeit deaktiviert.");
+			 redirect('auth/login');
+		}
 		$json = json_decode('{"general_types": {
         "audio": "Audio",
         "video": "Video",

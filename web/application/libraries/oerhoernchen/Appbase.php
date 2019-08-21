@@ -9,12 +9,14 @@ class Appbase {
 
 	}
 
-	private function store_entry_log_in_database($elastic_id, $oerhoernchen_id, $json_object_data, $imgur_url, $imgur_delete_hash, $user_id, $time) {
+	private function store_entry_log_in_database($elastic_id, $oerhoernchen_id, $main_url, $json_object_data, $imgur_url, $imgur_delete_hash, $user_id, $time) {
 
 		$data = array(
 			// 2DO: add oerhoernchen_index
 			'oerhoernchen_id' => $oerhoernchen_id,
 			'elastic_id' => $elastic_id,
+			'main_url'=>$main_url,
+			'main_url_hash'=>md5($main_url),
 			'imgur_url' => filter_var($imgur_url, FILTER_SANITIZE_STRING),
 			'imgur_delete_hash' => filter_var($imgur_delete_hash, FILTER_SANITIZE_STRING),
 			'user_id' => $user_id,
@@ -240,9 +242,23 @@ class Appbase {
 			// 2DO: check if this is created, otherwise error
 
 			// store (private) data in our database
-			if ($index == 'official') {
-				$this->store_entry_log_in_database($elastic_id, $oerhoernchen_id, json_encode($object_without_oerhoernchen_id), $imgur_url, $imgur_delete_hash, $user_id, $time);
+			// 2DO: we have to decide
+			// 2DO: only on create?
+			if($index == 'highereducation'){
+			//if ($index == 'official' || $index == 'highereducation') {
+				$this->store_entry_log_in_database(
+					$elastic_id,
+					$oerhoernchen_id,
+					$sanitized_object_data->main_url,
+					json_encode($object_without_oerhoernchen_id),
+					$imgur_url,
+					$imgur_delete_hash,
+					$user_id,
+					$time);
 			}
+
+
+
 			return $oerhoernchen_id;
 			//return $elastic_id;
 

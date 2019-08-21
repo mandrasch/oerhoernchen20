@@ -159,18 +159,28 @@ class Cli extends CI_Controller {
 					$urls[] = (string) $entry->loc;
 				}
 			}
-
 			custom_log_message("Found ".count($urls)." URLS with ".$urlStrPosValue);
 
-
 			// 2DO: curl all urls
-
 			foreach($urls as $url){
-				custom_log_message("Curling url: ".$url);
+
+				// check if already in db, so we don't need to contact elastic
+				// 2DO: add reindex/recrawl option, so that we crawl the page for updates
+				if($publishToProduction){
+					$this->db->where('main_url_hash', md5($url));
+					$this->db->from('oerh_log_submitted_entries');
+					$count = $this->db->count_all_results();
+					if($count>0){
+						custom_log_message("URL ".$url." is already in mysql database, we skip it ...");
+						continue;
+					}
+				}
 
 				custom_log_message("Sleep 5 seconds to be gentle to the server while curling... ;-)");
 				// 2DO: use robots.txt throttle limit
 				sleep(5);
+
+				custom_log_message("Curling url: ".$url);
 
 				$ch = curl_init();
 				$timeout = 5;
@@ -228,6 +238,32 @@ class Cli extends CI_Controller {
 			// 2DO: parse data with HtmlAnalyzer
 
 			// done. :)
+		}
+
+		// tmp_function
+		public function import_json(){
+			$json = file_get_contents(APPPATH.'/data/data_oerhoernchen20-highereducation__doc_0_1283.json');
+			$entries = json_decode($json);
+			foreach($entries as $entry){
+				$this->db->where('main_url_hash', md5($entry->main_url));
+				$this->db->from('oerh_log_submitted_entries');
+				$count = $this->db->count_all_results();
+
+				if($count == 0){
+					custom_log_message('Not in index, inserting url ... '.$entry->main_url);
+					$array = array(
+						'main_url'=>$entry->main_url,
+						'main_url_hash'=>md5($entry->main_url),
+						'oerhoernchen_id'=>'18411888225d5c2bd259c3c2.24188144',
+						'json_object'=>json_encode($entry)
+					);
+					$this->db->set($array);
+					$this->db->insert('oerh_log_submitted_entries');
+				}
+				else{
+					custom_log_message('Url '.$entry->main_url.' is already in index');
+				}
+			}
 		}
 
 }

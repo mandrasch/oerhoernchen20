@@ -43,6 +43,9 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
+
+		redirect("oerhoernchen/higher_education");
+
 		//$user = $this->ion_auth->user()->row(); #
 		//$data['user_email'] = $user->email;
 		//$this->load->view('welcome_message', $data);

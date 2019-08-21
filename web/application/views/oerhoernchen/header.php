@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 // set SEO values
-$site_title = 'OERhörnchen 2.0';
+$site_title = 'OERhörnchen 2.0 Hochschule';
 $meta_title = isset($meta_title) ? $meta_title : 'OERhörnchen 2.0';
 $meta_description = isset($meta_description) ? $meta_title : 'OERhörnchen';
 $meta_featured_image = isset($meta_featured_image) ? $meta_featured_image : ''; // 2DO: set default preview image
@@ -23,7 +23,10 @@ if($logged_in){
 	);
 }else{
 	$pages = array(
-		'Hochschul-OER-Suche'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Suche'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Hinzufügen (Infos)' =>  site_url('infos-hinzufuegen/'),
+		'Hinzufügen (Demo)' =>  site_url('lesezeichen/hinzufuegen'),
+
 		//'Klimakrise'=>'',
 	);
 }
