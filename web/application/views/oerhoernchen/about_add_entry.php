@@ -5,7 +5,9 @@
         	<div class="mx-auto col-lg-9 col-sm-12" style="font-size:18px;">
 
             <p> Disclaimer: Es handelt sich bei dieser Webseite um einen Prototypen, der „quick & dirty“ erstellt wurde, um die Auffindbarkeit von OER auch praxisbezogen diskutieren zu können. </p>
-            <h2>Sie möchten einen OER-Inhalt zu diesem Suchindex hinzufügen?</h2>
+            <h2>Sie sind Portal/Projektbetreiber?</h2>
+            <p><a href="https://twitter.com/m_andrasch/status/1164102539404566528">https://twitter.com/m_andrasch/status/1164102539404566528</a></p>
+            <h2>Sie sind Wissenschaftler*in und möchten einen OER-Inhalt zu diesem Suchindex hinzufügen?</h2>
             <p style="text-align:justify;">Grundsätzlich sollte man differenzieren: Zum einen gibt es <ul><li>a) bereits hochgeladene Inhalte im Web (z.B. ein YouTube Video), andererseits gibt es </li> <li>b) Inhalte, die noch nicht mit einer URL im Web zugänglich sind, sondern z.B. noch auf Ihrer Festplatte liegen.</li></ul> Letztere müssen also zu erst hochgeladen werden, eh sie erfasst werden können mit Metadaten.<br>Der einfachste Weg wäre, hier direkt ein Formular für den Upload als auch zur Erfassung eines bestehenden Inhalts anzubieten. Die Erfassung habe ich bereits prototypisch implementiert: <a href="<?php echo site_url("lesezeichen/hinzufuegen");?>">Eintrag hinzufügen</a>. Als Einzelperson kann ich aber die Verantwortung für die Redaktion sowie die Haftungsrisiken für mögliche Urheberrechtsfragen nicht tragen, sodass diese Funktion nicht öffentlich aktiviert ist. Daher sind Bundesländerinitiativen sowie Hochschulangebote so immens wichtig für den offenen Austausch von Lehrmaterial: Es geht um Verantwortung und langfristiges Bereitstellen der Inhalte.</p>
 
               <p>Hier zwei Beispiele, wie die Erfassung von bereits zugänglichen Online-Inhalten in edu-sharing (eingesetzt u.a. in Baden Württemberg bei ZOERR/OERBW) sowie auf dem HOOU-Portal (Hamburg) funktioniert:</p>
