@@ -4,23 +4,25 @@
         <div class="row">
         	<div class="mx-auto col-lg-9 col-sm-12" style="font-size:18px;">
 
-            <p> Disclaimer: Es handelt sich bei dieser Webseite um einen Prototypen, der „quick & dirty“ erstellt wurde, um die Auffindbarkeit von OER auch praxisbezogen diskutieren zu können.</p>
+            <p> Disclaimer: Es handelt sich bei dieser Webseite um einen Prototypen, der „quick & dirty“ erstellt wurde, um die Auffindbarkeit von OER auch praxisbezogen diskutieren zu können. </p>
             <h2>Sie möchten einen OER-Inhalt zu diesem Suchindex hinzufügen?</h2>
             <p style="text-align:justify;">Grundsätzlich sollte man differenzieren: Zum einen gibt es <ul><li>a) bereits hochgeladene Inhalte im Web (z.B. ein YouTube Video), andererseits gibt es </li> <li>b) Inhalte, die noch nicht mit einer URL im Web zugänglich sind, sondern z.B. noch auf Ihrer Festplatte liegen.</li></ul> Letztere müssen also zu erst hochgeladen werden, eh sie erfasst werden können mit Metadaten.<br>Der einfachste Weg wäre, hier direkt ein Formular für den Upload als auch zur Erfassung eines bestehenden Inhalts anzubieten. Die Erfassung habe ich bereits prototypisch implementiert: <a href="<?php echo site_url("lesezeichen/hinzufuegen");?>">Eintrag hinzufügen</a>. Als Einzelperson kann ich aber die Verantwortung für die Redaktion sowie die Haftungsrisiken für mögliche Urheberrechtsfragen nicht tragen, sodass diese Funktion nicht öffentlich aktiviert ist. Daher sind Bundesländerinitiativen sowie Hochschulangebote so immens wichtig für den offenen Austausch von Lehrmaterial: Es geht um Verantwortung und langfristiges Bereitstellen der Inhalte.</p>
 
               <p>Hier zwei Beispiele, wie die Erfassung von bereits zugänglichen Online-Inhalten in edu-sharing (eingesetzt u.a. in Baden Württemberg bei ZOERR/OERBW) sowie auf dem HOOU-Portal (Hamburg) funktioniert:</p>
 
               <div class="text-center">
-                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EcTdY1cLWqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-
-              <div class="text-center">
                 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5S2shOLrdDQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
 
+              <div class="text-center">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EcTdY1cLWqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
 
+              <p>Danach werden diese Einträge ggf. noch von einer Redaktion kurz formal geprüft (Lizenz, Metadaten ausreichend ausgefüllt, etc.), eh sie im Web einsehbar sind. Um bei den obigen Beispielen zu bleiben: In BaWü landen die Einträge dann <a href="https://oerbw.de/edu-sharing/components/search" target="_blank">hier</a>, in Hamburg <a href="https://www.hoou.de/discover?types=material" target="_blank">hier</a>. Von hieraus können diese Einträge weiter verteilt werden, bspw. in diesen prototypischen Suchindex auf dieser Webseite.</p>
 
-              <p>Je nach Bundeslandzugehörigkeit haben Sie weitere Möglichkeiten - in Zukunft sollen durch OER-Länderinitiativen weitere Möglichkeiten hinzukommen (ggf. existiert an ihrer Hochschule bereits ein OER-Angebot/Repository, diese sind jedoch noch nicht sehr verbreitet). Das große Ziel ist hierbei, dass in allen 16 Bundesländern Hochschulmitarbeiter*innen offenes Lehrmaterial in vielfältigen Formaten veröffentlichen (hochladen) können, welches dann über gute Suchinterfaces einfach und schnell auffindbar ist (dezentrale Vernetzung). Derzeitige Optionen:
+              <h2>Ihre Optionen, um Inhalte zu erfassen/hochzuladen</h2>
+
+              <p>Je nach Bundeslandzugehörigkeit (und Hochschulzugehörigkeit) haben Sie verschiedene Optionen derzeit, die allerdings leider noch etwas rar gesät sind - die gute Nachricht: In naher Zukunft sollen durch OER-Länderinitiativen weitere Möglichkeiten hinzukommen. Das große Ziel ist hierbei aus meiner Sicht, dass in allen 16 Bundesländern Hochschulmitarbeiter*innen offenes Lehrmaterial in vielfältigen Formaten erfassen und/oder auch veröffentlichen (hochladen) können. Dies Material kann elches dann über gute Suchinterfaces, z.B. auch fachspezifische Suchoberflächen, einfach und schnell auffindbar gemacht werden (dezentrale Vernetzung). Derzeitige Optionen für Sie:
             <ul>
               <li><a href="#fueralle">Für alle Wissenschaftler*innen</a></li>
               <li><a href="#bawue" style="color:darkgreen;">Hochschul-Mitarbeiter*innen in Baden Württemberg</a></li>
