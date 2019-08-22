@@ -4,24 +4,23 @@
     <div class="row">
       <div class="mx-auto col-lg-9 col-sm-12" style="margin-top:30px;">
         <div class="card">
-        <div class="card-header" style="color: #800000;">
-          <b>Bitte vor der Benutzung zustimmen!</b>
+        <div class="card-header" style="font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+          <b>Bitte vor dem Ausprobieren zustimmen</b>
         </div>
-        <div class="card-body">
-          <!-- <h5 class="card-title">Special title treatment</h5> -->
-          <p><i>Ich stimme der Aufzeichnung der Analysedaten (Suchbegriffe, Suchverhalten, Interaktionen auf der Webseite - ohne Personenbezug, siehe unten - Anbieter Appbase Inc., USA) zu und habe die Datenschutzerklärung (siehe unten) gelesen und zur Kenntnis genommen.</i></p>
+        <div class="card-body" style="font-size:14px;font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;">
+          <p style="margin-top:5px;margin-bottom:5px;">Dies ist ein nichtkommerzieller, privater Prototyp, betrieben von Matthias Andrasch. Der Prototyp wird derzeit hauptsächlich durch den Dienst-Anbieter <a href="https://appbase.io/">appbase.io</a> (Appbase Inc., USA) ermöglicht, da mir derzeit kein eigener Server mit ElasticSearch zur Verfügung steht. Daher bitte folgender Erklärung zustimmen vor der Benutzung:</p>
 
-          <p><i>Ich nehme außerdem zur Kenntnis, dass Vorschaubilder von externen Servern geladen werden und somit meine Browser- und Verbindungsdaten ggf. an Dritte übermittelt werden.</i></p>
+          <p style="margin-top:5px;margin-bottom:25px;"><i>Ich stimme der Aufzeichnung der Analysedaten (Suchbegriffe, Suchverhalten, Interaktionen auf der Webseite - ohne Personenbezug, siehe unten) zu und habe die Datenschutzerklärung (siehe unten) gelesen und zur Kenntnis genommen.<br>Ich nehme außerdem zur Kenntnis, dass Vorschaubilder von externen Servern geladen werden und somit meine Browser- und Verbindungsdaten ggf. an Dritte übermittelt werden.</i></p>
 
-          <p>Die Entscheidung wird mittels eines Session-Cookies für 2h gespeichert.</p>
-          <?php if($privacy_notice_accepted === FALSE): ?>
+        <?php if($privacy_notice_accepted === FALSE): ?>
           <div class="text-center">
-          <a href="<?php echo site_url("oerhoernchen/privacy/accept_privacy_notice");?>" class="btn btn-success"><i class="fas fa-check"></i> Zustimmen & Hochschul-Suche aufrufen</a>
+          <a href="<?php echo site_url("oerhoernchen/privacy/accept_privacy_notice");?>" class="btn btn-success"><i class="fas fa-check"></i> Zustimmen</a>
           <a href="https://o-e-r.de" class="btn btn-light">Webseite verlassen</a>
           </div>
         <?php else: ?>
           <p>Sie haben bereits zugestimmt. <a href="<?php echo site_url("oerhoernchen/privacy/remove_decision"); ?>">Entscheidung löschen</a></p>
         <?php endif; ?>
+        <p style="margin-bottom:5px;">Die Entscheidung wird mittels eines Session-Cookies für 2h gespeichert. Nach der Zustimmung wirst Du / werden Sie zur Hochschul-OER-Suche weitergeleitet.</p>
         </div>
       </div>
 
