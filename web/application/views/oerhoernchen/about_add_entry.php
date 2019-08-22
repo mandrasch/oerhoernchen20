@@ -24,7 +24,7 @@
 
               <h2>Ihre Optionen, um Inhalte zu erfassen/hochzuladen</h2>
 
-              <p>Je nach Bundeslandzugehörigkeit (und Hochschulzugehörigkeit) haben Sie verschiedene Optionen derzeit, die allerdings leider noch etwas rar gesät sind - die gute Nachricht: In naher Zukunft sollen durch OER-Länderinitiativen weitere Möglichkeiten hinzukommen. Das große Ziel ist hierbei aus meiner Sicht, dass in allen 16 Bundesländern Hochschulmitarbeiter*innen offenes Lehrmaterial in vielfältigen Formaten erfassen und/oder auch veröffentlichen (hochladen) können. Dies Material kann elches dann über gute Suchinterfaces, z.B. auch fachspezifische Suchoberflächen, einfach und schnell auffindbar gemacht werden (dezentrale Vernetzung). Derzeitige Optionen für Sie:
+              <p>Je nach Bundeslandzugehörigkeit (und Hochschulzugehörigkeit) haben Sie verschiedene Optionen derzeit, die allerdings leider noch etwas rar gesät sind - die gute Nachricht: In naher Zukunft sollen durch OER-Länderinitiativen weitere Möglichkeiten hinzukommen. Das große Ziel ist hierbei aus meiner Sicht, dass in allen 16 Bundesländern Hochschulmitarbeiter*innen offenes Lehrmaterial in vielfältigen Formaten erfassen und/oder auch veröffentlichen (hochladen) können. Diese Material kann dann über gute Suchinterfaces, z.B. auch fachspezifische Suchoberflächen, einfach und schnell auffindbar gemacht werden (dezentrale Vernetzung). Derzeitige Optionen für Sie:
             <ul>
               <li><a href="#fueralle">Für alle Wissenschaftler*innen</a></li>
               <li><a href="#bawue" style="color:darkgreen;">Hochschul-Mitarbeiter*innen in Baden Württemberg</a></li>
