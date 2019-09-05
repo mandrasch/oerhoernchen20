@@ -10,7 +10,7 @@ $header_subtitle = isset($header_subtitle) ? $header_subtitle : '';
 
 if($logged_in){
 	$pages = array(
-		'Alle Lesezeichen' => site_url('lesezeichen/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Alle Lesezeichen' => site_url('lesezeichen/'),
 		'Playground-Lesezeichen' => site_url('lesezeichen/playground/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
 		'Hochschul-OER-Suche'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
 		'Klimakrise'=>'',
@@ -23,7 +23,7 @@ if($logged_in){
 	);
 }else{
 	$pages = array(
-		'Suche'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0","CC BY","CC BY-SA"]'),
+		'Suche'=> site_url('hochschule/'),
 		'Suche (UNESCO-OER)'=> site_url('hochschule/') . '?licenseTypeFilter=' . urlencode('["CC0 (UNESCO-OER)","CC BY (UNESCO-OER)","CC BY-SA (UNESCO-OER)"]'),
 		'+ (Infos)' =>  site_url('infos-hinzufuegen/'),
 		'+ (Demo)' =>  site_url('lesezeichen/hinzufuegen'),
