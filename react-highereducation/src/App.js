@@ -221,7 +221,11 @@ class App extends Component {
               },{
                 "label":"HHU Mediathek",
                 "value":"hhu"
-              }]}
+              },
+            {
+              "label":"digiLL",
+              "value":"digill"
+            }]}
                 showSearch = {
                     false
                 }

@@ -2,21 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // cd /Users/admin/webserver/2019-oerhoernchen20/web/
-// 1. FLUSH
+
+// TEST CRAWLING:
+// 1. FLUSH crawltest
 // /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
 // 2. TRY Crawling (index _crawltest will be used)
 // /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
-// 3. Publish to official Index, append 1 as parameter (publish to production):
+// 3. Publish to official Index, append 1 as parameter (publish to production index):
 //  /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr 1
 
-// FLUSH:
-// Matthiass-Air:web admin$ /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
-
-// BETTER CALL THIS FROM CLI
-// cd /Users/admin/webserver/2019-oerhoernchen20/web/
-// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl hoou
-// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr
-// FOR PRODUCTION INDEX USE crawl zoerr 1 (isTest = )
 
 
 require_once APPPATH . 'third_party/simple_dom_parser/simple_dom_parser.php';
@@ -127,8 +121,8 @@ class Cli extends CI_Controller {
 					$projectHasMachineReadableLicense = false;
 					break;
 				case 'digill': // rdfa for the win
-					$sitemapUrl="https://digill-nrw.de/kurs-sitemap.xml";
-					$urlStrPosValue="kurs/";
+					$sitemapUrl="https://digill.de/course-sitemap.xml";
+					$urlStrPosValue="";
 					$projectHasMachineReadableLicense = true;
 					break;
 				case 'oncampus': // rdfa for the win
