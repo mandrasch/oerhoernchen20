@@ -225,7 +225,11 @@ class App extends Component {
             {
               "label":"digiLL",
               "value":"digill"
-            }]}
+            },
+          {
+            "label":"openRUB",
+            "value":"openrub"
+          }]}
                 showSearch = {
                     false
                 }

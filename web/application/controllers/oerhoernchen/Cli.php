@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //  /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli crawl zoerr 1
 
 
+// Pro tipp for mac - use caffeinate command so that MAMP won't shutdown
+// caffeinate
+
 
 require_once APPPATH . 'third_party/simple_dom_parser/simple_dom_parser.php';
 
@@ -124,6 +127,12 @@ class Cli extends CI_Controller {
 					$sitemapUrl="https://digill.de/course-sitemap.xml";
 					$urlStrPosValue="";
 					$projectHasMachineReadableLicense = true;
+					break;
+				// 2DO: there is also /en/ and also /material/, right now we index courses
+				case 'openrub':
+					$sitemapUrl="https://open.ruhr-uni-bochum.de/sitemap.xml";
+					$urlStrPosValue="ruhr-uni-bochum.de/lernangebot/";
+					$projectHasMachineReadableLicense=false; // they're working on it
 					break;
 				case 'oncampus': // rdfa for the win
 						$sitemapUrl="https://www.oncampus.de/sitemap.xml";
