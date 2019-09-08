@@ -4,6 +4,8 @@ IT IS NOT RECOMMEND TO USE IT IN PRODUCTION ENVIRONMENTS, NO WARRANTY
 
 Live demo: https://beta2.oerhoernchen.de/hochschule/
 
+Background / more information: https://www.youtube.com/watch?v=ibFHmo_jHC4&feature=youtu.be
+
 ## Technical background
 
 How was OER metadata obtained from https://oerbw.de, https://hoou.de and others?
