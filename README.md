@@ -6,7 +6,7 @@ Live demo: https://beta2.oerhoernchen.de/hochschule/
 
 Background / documentation:
 
-- DE https://www.youtube.com/watch?v=I7nUONiuPaw
+- DE https://www.youtube.com/watch?v=yI5xqyNTkTs
 - EN https://www.youtube.com/watch?v=ibFHmo_jHC4
 
 (Maybe extend this idea for #TOSIoer - first draft:
