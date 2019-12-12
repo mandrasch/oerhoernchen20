@@ -9,6 +9,9 @@ Background / documentation:
 - DE https://www.youtube.com/watch?v=I7nUONiuPaw
 - EN https://www.youtube.com/watch?v=ibFHmo_jHC4
 
+(Maybe extend this idea for #TOSIoer - first draft:
+https://docs.google.com/presentation/d/14jMeONt1-uW9QKOuciZBw9uGSR6GC6JHzfBx9uckp3g/edit#slide=id.p)
+
 ## Technical background
 
 How was OER metadata obtained from https://oerbw.de, https://hoou.de and others?
