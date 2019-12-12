@@ -4,7 +4,10 @@ IT IS NOT RECOMMEND TO USE IT IN PRODUCTION ENVIRONMENTS, NO WARRANTY
 
 Live demo: https://beta2.oerhoernchen.de/hochschule/
 
-Background / more information: https://www.youtube.com/watch?v=ibFHmo_jHC4&feature=youtu.be
+Background / documentation:
+
+- DE https://www.youtube.com/watch?v=I7nUONiuPaw
+- EN https://www.youtube.com/watch?v=ibFHmo_jHC4
 
 ## Technical background
 
