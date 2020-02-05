@@ -1,4 +1,9 @@
-Quick & dirty prototype
+Update February 2020: @sroertgen forked this prototype, please check out his fork for further improvements 
+https://github.com/sroertgen/oerhoernchen20_docker
+
+This repository is currently not actively developed.
+
+# Quick & dirty prototype
 
 IT IS NOT RECOMMEND TO USE IT IN PRODUCTION ENVIRONMENTS, NO WARRANTY
 
