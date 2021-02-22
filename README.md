@@ -7,7 +7,7 @@ This repository is currently not actively developed.
 
 IT IS NOT RECOMMEND TO USE IT IN PRODUCTION ENVIRONMENTS, NO WARRANTY
 
-Live demo: https://beta2.oerhoernchen.de/hochschule/
+Live demo: https://beta2.oerhoernchen.de/hochschule/ (offline)
 
 Background / documentation:
 
