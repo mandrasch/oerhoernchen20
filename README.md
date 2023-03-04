@@ -1,3 +1,5 @@
+Update December 2021: This idea / technical approach is now used in a real OER search engine: https://oersi.org/resources/, source code: https://gitlab.com/oersi. Much success, OERSI-team! 🎉
+
 Update February 2020: @sroertgen forked this prototype, please check out his fork for further improvements 
 https://github.com/sroertgen/oerhoernchen20_docker
 
